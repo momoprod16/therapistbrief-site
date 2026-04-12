@@ -594,14 +594,14 @@
 
     <!-- ========== HERO ========== -->
     <section class="hero" id="about">
-        <div class="hero-kicker">Subscriptions Available Soon</div>
+        <div class="hero-kicker">Now Accepting Subscribers</div>
         <h2>Research you can use,<br>in the time you actually have.</h2>
         <p>One brief per day. One study. Key findings, clinical implications, and limitations &mdash; all in 3 minutes or less. Built for therapists, by therapists.</p>
         <form class="signup-form" id="subscribe">
             <input type="email" placeholder="your@email.com" required>
             <button type="submit">Subscribe Free</button>
         </form>
-        <div class="signup-note">Free tier: 1 brief per week. Upgrade anytime.</div>
+        <div class="signup-note" id="msg-top">Free tier: 1 brief per week. Upgrade anytime.</div>
     </section>
 
     <!-- ========== DIVIDER ========== -->
@@ -754,10 +754,11 @@
     <section class="hero" style="padding-top:36px;padding-bottom:48px;">
         <h2>Stay current. Stay grounded. Stay brief.</h2>
         <p>Join hundreds of clinicians who start their morning with evidence.</p>
-        <form class="signup-form">
+        <form class="signup-form" id="subscribe-bottom">
             <input type="email" placeholder="your@email.com" required>
             <button type="submit">Subscribe Free</button>
         </form>
+        <div class="signup-note" id="msg-bottom"></div>
     </section>
 
     <!-- ========== FOOTER ========== -->
@@ -774,5 +775,55 @@
 
 </div>
 
+<script>
+(function() {
+    var API = "https://api.thetherapistbrief.com";
+
+    function handleSubscribe(form, msgEl) {
+        form.addEventListener("submit", function(e) {
+            e.preventDefault();
+            var email = form.querySelector("input[type=email]").value.trim();
+            var btn = form.querySelector("button");
+            if (!email) return;
+
+            btn.disabled = true;
+            btn.textContent = "Submitting\u2026";
+            msgEl.textContent = "";
+
+            fetch(API + "/subscribe", {
+                method: "POST",
+                headers: {"Content-Type": "application/json"},
+                body: JSON.stringify({email: email})
+            })
+            .then(function(r) { return r.json().then(function(d) { return {ok: r.ok, data: d}; }); })
+            .then(function(res) {
+                if (res.ok) {
+                    msgEl.style.color = "var(--brown)";
+                    msgEl.textContent = res.data.message + " Redirecting to choose your topics\u2026";
+                    setTimeout(function() {
+                        window.location.href = "preferences.html?email=" + encodeURIComponent(email);
+                    }, 1200);
+                } else {
+                    msgEl.style.color = "#b33";
+                    msgEl.textContent = res.data.error || "Something went wrong.";
+                    btn.disabled = false;
+                    btn.textContent = "Subscribe Free";
+                }
+            })
+            .catch(function() {
+                msgEl.style.color = "#b33";
+                msgEl.textContent = "Connection error. Please try again.";
+                btn.disabled = false;
+                btn.textContent = "Subscribe Free";
+            });
+        });
+    }
+
+    var top = document.getElementById("subscribe");
+    var bottom = document.getElementById("subscribe-bottom");
+    if (top) handleSubscribe(top, document.getElementById("msg-top"));
+    if (bottom) handleSubscribe(bottom, document.getElementById("msg-bottom"));
+})();
+</script>
 </body>
 </html>

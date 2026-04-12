@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Choose Your Topics — The Therapist Brief</title>
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --ivory: #FAF6F0; --parchment: #F0E8DA; --linen: #EDE8E0;
+            --walnut: #2C1810; --walnut-soft: #3D2B1F; --brown: #6B3A2A;
+            --brown-hover: #8B4E3A; --gold: #C4A265; --sepia: #7A6555;
+            --sepia-light: #9B8A78; --cream: #D6CCBB;
+        }
+        html { scroll-behavior: smooth; }
+        body {
+            background: var(--linen); color: var(--walnut-soft);
+            font-family: Georgia, 'Times New Roman', serif; line-height: 1.7;
+        }
+        .page { max-width: 720px; margin: 0 auto; background: var(--ivory);
+                 min-height: 100vh; border-left: 1px solid var(--cream);
+                 border-right: 1px solid var(--cream); padding: 0 48px 60px; }
+
+        .header { text-align: center; padding: 32px 0 24px;
+                   border-bottom: 3px double var(--walnut); margin-bottom: 32px; }
+        .header h1 { font-size: 28px; color: var(--walnut); margin-bottom: 4px; }
+        .header p { font-size: 14px; color: var(--sepia); font-style: italic; }
+
+        .tier-badge { display: inline-block; font-size: 10px; letter-spacing: 2px;
+                      text-transform: uppercase; font-weight: 700; padding: 4px 12px;
+                      border-radius: 2px; margin-bottom: 24px; }
+        .tier-free { background: var(--cream); color: var(--walnut); }
+        .tier-premium { background: var(--gold); color: var(--walnut); }
+
+        .instructions { font-size: 15px; color: var(--sepia); margin-bottom: 28px;
+                        line-height: 1.65; text-align: center; }
+
+        .category-group { margin-bottom: 28px; }
+        .category-group h2 { font-size: 13px; letter-spacing: 2px; text-transform: uppercase;
+                             color: var(--brown); font-weight: 700; padding: 8px 0;
+                             border-top: 1px solid var(--gold); border-bottom: 1px solid var(--gold);
+                             text-align: center; margin-bottom: 12px; }
+
+        .topic-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0; }
+        .topic-item { padding: 12px 16px; border: 1px solid var(--cream);
+                      cursor: pointer; transition: background 0.15s; position: relative; }
+        .topic-item:hover { background: var(--parchment); }
+        .topic-item.selected { background: var(--parchment); border-color: var(--gold); }
+        .topic-item.disabled { opacity: 0.4; cursor: not-allowed; }
+        .topic-item h4 { font-size: 14px; color: var(--walnut); margin-bottom: 2px; }
+        .topic-item .day-label { font-size: 11px; color: var(--gold); font-weight: 700; }
+
+        .day-selector { margin-top: 8px; display: none; }
+        .topic-item.selected .day-selector { display: block; }
+        .day-selector select { font-family: Georgia, serif; font-size: 12px;
+                               padding: 4px 8px; border: 1px solid var(--cream);
+                               background: var(--ivory); color: var(--walnut-soft); }
+
+        .actions { text-align: center; margin-top: 36px; }
+        .btn { font-family: Georgia, serif; font-size: 12px; letter-spacing: 2px;
+               text-transform: uppercase; font-weight: 700; padding: 14px 32px;
+               border: none; border-radius: 2px; cursor: pointer; transition: background 0.2s; }
+        .btn-primary { background: var(--brown); color: var(--ivory);
+                       border-bottom: 3px solid #4A2618; }
+        .btn-primary:hover { background: var(--brown-hover); }
+        .btn-primary:disabled { opacity: 0.5; cursor: not-allowed; }
+        .btn-upgrade { background: transparent; color: var(--brown); border: 1px solid var(--brown);
+                       margin-left: 12px; padding: 14px 24px; text-decoration: none;
+                       display: inline-block; font-family: Georgia, serif; font-size: 12px;
+                       letter-spacing: 2px; text-transform: uppercase; font-weight: 700; }
+        .btn-upgrade:hover { background: var(--parchment); }
+
+        .msg { text-align: center; margin-top: 16px; font-size: 14px; min-height: 20px; }
+        .msg.ok { color: var(--brown); } .msg.err { color: #b33; }
+
+        .count-bar { text-align: center; font-size: 13px; color: var(--sepia);
+                     margin-bottom: 20px; padding: 10px; background: var(--parchment);
+                     border-radius: 2px; }
+        .count-bar strong { color: var(--walnut); }
+
+        @media (max-width: 600px) {
+            .page { padding: 0 20px 40px; border: none; }
+            .topic-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+<div class="page">
+    <div class="header">
+        <h1>The Therapist Brief</h1>
+        <p>Choose your research topics</p>
+    </div>
+
+    <div style="text-align:center">
+        <span class="tier-badge tier-free" id="tier-badge">Free Tier</span>
+    </div>
+
+    <p class="instructions" id="instructions">
+        Select <strong>1 topic</strong> for your Monday brief.
+        Upgrade to Professional for up to 7 daily topics.
+    </p>
+
+    <div class="count-bar">
+        <strong id="count">0</strong> of <strong id="max">1</strong> topics selected
+    </div>
+
+    <div id="topics-container"></div>
+
+    <div class="actions">
+        <button class="btn btn-primary" id="save-btn" disabled>Save Preferences</button>
+        <a class="btn-upgrade" id="upgrade-link" href="#">Upgrade to Professional</a>
+    </div>
+    <div class="msg" id="msg"></div>
+</div>
+
+<script>
+(function() {
+    var API = "https://api.thetherapistbrief.com";
+    var params = new URLSearchParams(window.location.search);
+    var email = params.get("email");
+    if (!email) { document.querySelector(".page").innerHTML = "<p style='padding:60px;text-align:center'>No email provided. <a href='index.html'>Go back</a>.</p>"; return; }
+
+    var TOPIC_LABELS = {
+        "cbt": "CBT", "dbt": "DBT", "emdr": "EMDR", "act": "ACT", "ifs": "IFS",
+        "motivational-interviewing": "Motivational Interviewing",
+        "psychodynamic": "Psychodynamic", "sfbt": "SFBT",
+        "anxiety": "Anxiety", "depression": "Depression", "ptsd": "PTSD",
+        "adhd": "ADHD", "bipolar": "Bipolar", "personality-disorders": "Personality Disorders",
+        "substance-use": "Substance Use",
+        "compassion-fatigue": "Compassion Fatigue", "vicarious-trauma": "Vicarious Trauma",
+        "self-care": "Self-Care", "work-life-balance": "Work-Life Balance",
+        "supervision": "Supervision", "mindfulness": "Mindfulness",
+        "children": "Children", "veterans": "Veterans", "lgbtq": "LGBTQ+",
+        "older-adults": "Older Adults", "culturally-diverse": "Culturally Diverse",
+        "disabilities": "Clients with Disabilities"
+    };
+    var GROUP_LABELS = {
+        "therapeutic-approaches": "Therapeutic Approaches",
+        "dsm5-disorders": "DSM-5 Disorders",
+        "counselor-wellness": "Counselor Wellness",
+        "specific-populations": "Specific Populations"
+    };
+    var DAYS = ["monday","tuesday","wednesday","thursday","friday","saturday","sunday"];
+    var DAY_LABELS = ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"];
+
+    var tier = "free", maxTopics = 1, selected = {}; // {topic: day}
+    var container = document.getElementById("topics-container");
+    var countEl = document.getElementById("count");
+    var maxEl = document.getElementById("max");
+    var saveBtn = document.getElementById("save-btn");
+    var msgEl = document.getElementById("msg");
+    var instrEl = document.getElementById("instructions");
+    var badgeEl = document.getElementById("tier-badge");
+    var upgradeLink = document.getElementById("upgrade-link");
+
+    function updateUI() {
+        var n = Object.keys(selected).length;
+        countEl.textContent = n;
+        maxEl.textContent = maxTopics;
+        saveBtn.disabled = n === 0;
+
+        document.querySelectorAll(".topic-item").forEach(function(el) {
+            var slug = el.dataset.topic;
+            var isSelected = slug in selected;
+            el.classList.toggle("selected", isSelected);
+            el.classList.toggle("disabled", !isSelected && n >= maxTopics);
+            var dayLabel = el.querySelector(".day-label");
+            if (isSelected && selected[slug]) {
+                dayLabel.textContent = DAY_LABELS[DAYS.indexOf(selected[slug])];
+            } else {
+                dayLabel.textContent = "";
+            }
+            var sel = el.querySelector("select");
+            if (sel && isSelected) sel.value = selected[slug] || "";
+        });
+    }
+
+    function getAvailableDays() {
+        var used = {};
+        for (var t in selected) used[selected[t]] = true;
+        return DAYS.filter(function(d) { return !used[d]; });
+    }
+
+    function buildDaySelect(topicSlug) {
+        var sel = document.createElement("select");
+        if (tier === "free") {
+            var opt = document.createElement("option");
+            opt.value = "monday"; opt.textContent = "Monday";
+            sel.appendChild(opt);
+        } else {
+            var avail = getAvailableDays();
+            if (selected[topicSlug]) avail.push(selected[topicSlug]);
+            avail.sort(function(a,b) { return DAYS.indexOf(a) - DAYS.indexOf(b); });
+            var seen = {};
+            avail.forEach(function(d) {
+                if (seen[d]) return; seen[d] = true;
+                var opt = document.createElement("option");
+                opt.value = d; opt.textContent = DAY_LABELS[DAYS.indexOf(d)];
+                sel.appendChild(opt);
+            });
+        }
+        sel.value = selected[topicSlug] || (sel.options[0] ? sel.options[0].value : "");
+        sel.addEventListener("change", function(e) {
+            e.stopPropagation();
+            selected[topicSlug] = sel.value;
+            updateUI();
+        });
+        sel.addEventListener("click", function(e) { e.stopPropagation(); });
+        return sel;
+    }
+
+    function renderTopics(groups) {
+        container.innerHTML = "";
+        var order = ["therapeutic-approaches","dsm5-disorders","counselor-wellness","specific-populations"];
+        order.forEach(function(groupKey) {
+            var topics = groups[groupKey];
+            if (!topics) return;
+            var section = document.createElement("div");
+            section.className = "category-group";
+            section.innerHTML = "<h2>" + (GROUP_LABELS[groupKey] || groupKey) + "</h2>";
+            var grid = document.createElement("div");
+            grid.className = "topic-grid";
+
+            topics.forEach(function(slug) {
+                var item = document.createElement("div");
+                item.className = "topic-item";
+                item.dataset.topic = slug;
+                item.innerHTML = '<h4>' + (TOPIC_LABELS[slug] || slug) + '</h4>'
+                    + '<span class="day-label"></span>'
+                    + '<div class="day-selector"></div>';
+
+                item.addEventListener("click", function() {
+                    if (slug in selected) {
+                        delete selected[slug];
+                        item.querySelector(".day-selector").innerHTML = "";
+                    } else {
+                        if (Object.keys(selected).length >= maxTopics) return;
+                        var avail = getAvailableDays();
+                        if (!avail.length) return;
+                        selected[slug] = tier === "free" ? "monday" : avail[0];
+                        var dsDiv = item.querySelector(".day-selector");
+                        dsDiv.innerHTML = "";
+                        dsDiv.appendChild(buildDaySelect(slug));
+                    }
+                    updateUI();
+                });
+                grid.appendChild(item);
+            });
+            section.appendChild(grid);
+            container.appendChild(section);
+        });
+        updateUI();
+    }
+
+    function setTier(t) {
+        tier = t;
+        maxTopics = t === "premium" ? 7 : 1;
+        badgeEl.className = "tier-badge " + (t === "premium" ? "tier-premium" : "tier-free");
+        badgeEl.textContent = t === "premium" ? "Professional" : "Free Tier";
+        instrEl.innerHTML = t === "premium"
+            ? "Select up to <strong>7 topics</strong>, one for each day of the week."
+            : "Select <strong>1 topic</strong> for your Monday brief. Upgrade to Professional for up to 7 daily topics.";
+        upgradeLink.style.display = t === "premium" ? "none" : "inline-block";
+        updateUI();
+    }
+
+    // Load topics
+    fetch(API + "/topics")
+        .then(function(r) { return r.json(); })
+        .then(function(groups) { renderTopics(groups); })
+        .catch(function() { container.innerHTML = "<p>Could not load topics.</p>"; });
+
+    // Load existing preferences
+    fetch(API + "/preferences?email=" + encodeURIComponent(email))
+        .then(function(r) { return r.json(); })
+        .then(function(data) {
+            if (data.tier) setTier(data.tier);
+            if (data.preferences) {
+                selected = {};
+                for (var day in data.preferences) selected[data.preferences[day]] = day;
+                updateUI();
+            }
+        })
+        .catch(function() {});
+
+    // Save
+    saveBtn.addEventListener("click", function() {
+        var prefs = {};
+        for (var topic in selected) prefs[selected[topic]] = topic;
+        saveBtn.disabled = true;
+        saveBtn.textContent = "Saving\u2026";
+        msgEl.textContent = "";
+
+        fetch(API + "/preferences", {
+            method: "POST",
+            headers: {"Content-Type": "application/json"},
+            body: JSON.stringify({email: email, preferences: prefs})
+        })
+        .then(function(r) { return r.json().then(function(d) { return {ok: r.ok, data: d}; }); })
+        .then(function(res) {
+            if (res.ok) {
+                msgEl.className = "msg ok";
+                msgEl.textContent = "Preferences saved! You'll start receiving briefs on your selected days.";
+            } else {
+                msgEl.className = "msg err";
+                msgEl.textContent = res.data.error || "Could not save.";
+            }
+            saveBtn.disabled = false;
+            saveBtn.textContent = "Save Preferences";
+        })
+        .catch(function() {
+            msgEl.className = "msg err";
+            msgEl.textContent = "Connection error. Please try again.";
+            saveBtn.disabled = false;
+            saveBtn.textContent = "Save Preferences";
+        });
+    });
+
+    // Upgrade link
+    upgradeLink.addEventListener("click", function(e) {
+        e.preventDefault();
+        fetch(API + "/create-checkout-session", {
+            method: "POST",
+            headers: {"Content-Type": "application/json"},
+            body: JSON.stringify({email: email})
+        })
+        .then(function(r) { return r.json(); })
+        .then(function(data) {
+            if (data.checkout_url) window.location.href = data.checkout_url;
+            else { msgEl.className = "msg err"; msgEl.textContent = "Could not start checkout."; }
+        })
+        .catch(function() { msgEl.className = "msg err"; msgEl.textContent = "Connection error."; });
+    });
+})();
+</script>
+</body>
+</html>
