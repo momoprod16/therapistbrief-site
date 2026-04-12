@@ -1,0 +1,778 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Therapist Brief — Evidence-Based Research for the Practicing Clinician</title>
+    <meta name="description" content="A daily research brief for licensed mental health professionals. Evidence-based findings delivered in 3 minutes or less.">
+    <style>
+        /* ======= RESET & BASE ======= */
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --ivory:       #FAF6F0;
+            --parchment:   #F0E8DA;
+            --linen:       #EDE8E0;
+            --walnut:      #2C1810;
+            --walnut-soft: #3D2B1F;
+            --brown:       #6B3A2A;
+            --brown-hover: #8B4E3A;
+            --gold:        #C4A265;
+            --gold-muted:  #B89A5A;
+            --sepia:       #7A6555;
+            --sepia-light: #9B8A78;
+            --khaki:       #8B7355;
+            --cream:       #D6CCBB;
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            background-color: var(--linen);
+            color: var(--walnut-soft);
+            font-family: Georgia, 'Times New Roman', 'Palatino Linotype', serif;
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* ======= NEWSPAPER CONTAINER ======= */
+        .newspaper {
+            max-width: 780px;
+            margin: 0 auto;
+            background: var(--ivory);
+            min-height: 100vh;
+            border-left: 1px solid var(--cream);
+            border-right: 1px solid var(--cream);
+            box-shadow: 0 0 60px rgba(44, 24, 16, 0.06);
+        }
+
+        /* ======= MASTHEAD ======= */
+        .masthead {
+            padding: 0 48px;
+            text-align: center;
+        }
+
+        .masthead-rule-top {
+            border-top: 4px double var(--walnut);
+            padding-top: 4px;
+            border-bottom: 1px solid var(--walnut);
+            margin-top: 32px;
+        }
+
+        .masthead-dateline {
+            padding-top: 14px;
+            font-size: 10px;
+            color: var(--sepia);
+            letter-spacing: 2.5px;
+            text-transform: uppercase;
+            font-family: Georgia, serif;
+        }
+
+        .masthead-title {
+            padding: 10px 0 6px;
+            font-size: clamp(32px, 5vw, 52px);
+            font-weight: 700;
+            color: var(--walnut);
+            letter-spacing: 1px;
+            line-height: 1.1;
+        }
+
+        .masthead-tagline {
+            font-size: 12px;
+            color: var(--sepia);
+            font-style: italic;
+            letter-spacing: 0.5px;
+            padding-bottom: 14px;
+        }
+
+        .masthead-rule-bottom {
+            border-top: 1px solid var(--walnut);
+            padding-top: 3px;
+            border-bottom: 3px double var(--walnut);
+        }
+
+        /* ======= NAV ======= */
+        .nav-bar {
+            padding: 14px 48px;
+            text-align: center;
+            border-bottom: 1px solid var(--cream);
+        }
+        .nav-bar a {
+            font-family: Georgia, serif;
+            font-size: 11px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--brown);
+            text-decoration: none;
+            padding: 0 16px;
+            font-weight: 700;
+            transition: color 0.2s;
+        }
+        .nav-bar a:hover { color: var(--walnut); }
+
+        /* ======= HERO ======= */
+        .hero {
+            padding: 56px 48px 40px;
+            text-align: center;
+        }
+
+        .hero-kicker {
+            display: inline-block;
+            background: var(--brown);
+            color: var(--ivory);
+            font-size: 10px;
+            letter-spacing: 2.5px;
+            text-transform: uppercase;
+            font-weight: 700;
+            padding: 4px 14px;
+            border-radius: 2px;
+            margin-bottom: 24px;
+        }
+
+        .hero h2 {
+            font-size: clamp(24px, 3.5vw, 38px);
+            font-weight: 700;
+            color: var(--walnut);
+            line-height: 1.3;
+            max-width: 600px;
+            margin: 0 auto 20px;
+        }
+
+        .hero p {
+            font-size: 17px;
+            color: var(--sepia);
+            max-width: 520px;
+            margin: 0 auto 36px;
+            line-height: 1.75;
+        }
+
+        /* ======= RESEARCH QUOTE ======= */
+        .research-quote {
+            padding: 28px 48px 24px;
+            text-align: center;
+            border-bottom: 1px solid var(--cream);
+            background: var(--parchment);
+        }
+
+        .research-quote blockquote {
+            font-size: 17px;
+            font-style: italic;
+            color: var(--walnut-soft);
+            max-width: 560px;
+            margin: 0 auto 8px;
+            line-height: 1.65;
+        }
+
+        .research-quote cite {
+            font-size: 12px;
+            color: var(--sepia-light);
+            font-style: normal;
+            letter-spacing: 0.5px;
+        }
+
+        /* ======= SIGNUP FORM ======= */
+        .signup-form {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            flex-wrap: wrap;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .signup-form input[type="email"] {
+            font-family: Georgia, serif;
+            font-size: 15px;
+            padding: 14px 20px;
+            border: 1px solid var(--cream);
+            background: var(--ivory);
+            color: var(--walnut-soft);
+            border-radius: 2px;
+            width: 300px;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+        .signup-form input[type="email"]:focus {
+            border-color: var(--gold);
+        }
+        .signup-form input[type="email"]::placeholder {
+            color: var(--sepia-light);
+            font-style: italic;
+        }
+
+        .signup-form button {
+            font-family: Georgia, serif;
+            font-size: 12px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            font-weight: 700;
+            padding: 14px 28px;
+            background: var(--brown);
+            color: var(--ivory);
+            border: none;
+            border-radius: 2px;
+            border-bottom: 3px solid #4A2618;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        .signup-form button:hover {
+            background: var(--brown-hover);
+        }
+
+        .signup-note {
+            margin-top: 14px;
+            font-size: 11px;
+            color: var(--sepia-light);
+            font-style: italic;
+        }
+
+        /* ======= ORNAMENTAL DIVIDER ======= */
+        .ornament {
+            display: flex;
+            align-items: center;
+            padding: 0 48px;
+            margin: 10px 0;
+        }
+        .ornament-line {
+            flex: 1;
+            height: 1px;
+            background: var(--gold);
+        }
+        .ornament-diamond {
+            padding: 0 14px;
+            font-size: 14px;
+            color: var(--gold);
+            line-height: 1;
+        }
+
+        /* ======= SECTION HEADINGS ======= */
+        .section-label {
+            text-align: center;
+            padding: 36px 48px 8px;
+        }
+        .section-label span {
+            display: inline-block;
+            font-size: 10px;
+            letter-spacing: 2.5px;
+            text-transform: uppercase;
+            font-weight: 700;
+            color: var(--brown);
+            border-top: 1px solid var(--gold);
+            border-bottom: 1px solid var(--gold);
+            padding: 8px 24px;
+        }
+
+        /* ======= WHAT YOU GET (3-column layout) ======= */
+        .columns {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0;
+            padding: 24px 48px 40px;
+        }
+
+        .column {
+            padding: 20px 18px;
+            border-left: 1px solid var(--cream);
+            text-align: center;
+        }
+        .column:first-child { border-left: none; }
+
+        .column-icon {
+            font-size: 28px;
+            color: var(--gold);
+            margin-bottom: 12px;
+        }
+
+        .column h3 {
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--walnut);
+            margin-bottom: 10px;
+            line-height: 1.3;
+        }
+
+        .column p {
+            font-size: 14px;
+            color: var(--sepia);
+            line-height: 1.65;
+        }
+
+        /* ======= SAMPLE BRIEF ======= */
+        .sample-brief {
+            margin: 0 48px 40px;
+            background: var(--parchment);
+            border-left: 3px solid var(--gold);
+            padding: 28px 28px 24px;
+        }
+
+        .sample-brief-label {
+            font-size: 10px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--brown);
+            font-weight: 700;
+            margin-bottom: 14px;
+        }
+
+        .sample-brief h3 {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--walnut);
+            line-height: 1.35;
+            margin-bottom: 14px;
+        }
+
+        .sample-brief-tag {
+            display: inline-block;
+            background: var(--brown);
+            color: var(--ivory);
+            font-size: 9px;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            font-weight: 700;
+            padding: 3px 8px;
+            border-radius: 2px;
+            margin-bottom: 10px;
+        }
+
+        .sample-brief p {
+            font-size: 15px;
+            color: var(--walnut-soft);
+            line-height: 1.7;
+            margin-bottom: 12px;
+        }
+
+        .sample-brief cite {
+            display: block;
+            font-size: 12px;
+            color: var(--sepia);
+            font-style: italic;
+            line-height: 1.5;
+            margin-top: 16px;
+            padding-top: 12px;
+            border-top: 1px dashed var(--gold);
+        }
+
+        /* ======= CATEGORIES GRID ======= */
+        .categories {
+            padding: 24px 48px 40px;
+        }
+
+        .cat-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 0;
+        }
+
+        .cat-item {
+            padding: 18px 20px;
+            border-bottom: 1px solid var(--cream);
+            border-right: 1px solid var(--cream);
+        }
+        .cat-item:nth-child(2n) { border-right: none; }
+
+        .cat-item h4 {
+            font-size: 15px;
+            font-weight: 700;
+            color: var(--walnut);
+            margin-bottom: 6px;
+        }
+
+        .cat-item p {
+            font-size: 12px;
+            color: var(--sepia);
+            line-height: 1.5;
+        }
+
+        /* ======= PRICING ======= */
+        .pricing {
+            padding: 24px 48px 48px;
+        }
+
+        .pricing-cards {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+        }
+
+        .price-card {
+            border: 1px solid var(--cream);
+            padding: 32px 24px;
+            text-align: center;
+            position: relative;
+        }
+
+        .price-card.featured {
+            border: 2px solid var(--gold);
+            background: var(--parchment);
+        }
+
+        .price-card.featured::before {
+            content: "MOST POPULAR";
+            position: absolute;
+            top: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--gold);
+            color: var(--walnut);
+            font-size: 9px;
+            letter-spacing: 1.5px;
+            font-weight: 700;
+            padding: 3px 12px;
+            border-radius: 2px;
+        }
+
+        .price-card h3 {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--walnut);
+            margin-bottom: 6px;
+        }
+
+        .price-card .price {
+            font-size: 36px;
+            font-weight: 700;
+            color: var(--brown);
+            margin: 16px 0 4px;
+        }
+        .price-card .price span {
+            font-size: 14px;
+            color: var(--sepia);
+            font-weight: 400;
+        }
+
+        .price-card .price-desc {
+            font-size: 13px;
+            color: var(--sepia);
+            font-style: italic;
+            margin-bottom: 20px;
+        }
+
+        .price-card ul {
+            list-style: none;
+            margin-bottom: 24px;
+        }
+        .price-card ul li {
+            font-size: 13px;
+            color: var(--walnut-soft);
+            padding: 6px 0;
+            border-bottom: 1px dotted var(--cream);
+        }
+        .price-card ul li:last-child { border-bottom: none; }
+
+        .price-card a.cta {
+            display: inline-block;
+            font-family: Georgia, serif;
+            font-size: 12px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            font-weight: 700;
+            padding: 12px 28px;
+            text-decoration: none;
+            border-radius: 2px;
+            transition: background 0.2s;
+        }
+
+        .price-card a.cta-primary {
+            background: var(--brown);
+            color: var(--ivory);
+            border-bottom: 3px solid #4A2618;
+        }
+        .price-card a.cta-primary:hover { background: var(--brown-hover); }
+
+        .price-card a.cta-secondary {
+            background: transparent;
+            color: var(--brown);
+            border: 1px solid var(--brown);
+        }
+        .price-card a.cta-secondary:hover { background: var(--parchment); }
+
+        /* ======= TESTIMONIAL / PULL QUOTE ======= */
+        .pull-quote {
+            padding: 40px 72px;
+            text-align: center;
+        }
+        .pull-quote blockquote {
+            font-size: 20px;
+            font-style: italic;
+            color: var(--walnut);
+            line-height: 1.6;
+            margin-bottom: 14px;
+        }
+        .pull-quote blockquote::before { content: "\201C"; }
+        .pull-quote blockquote::after { content: "\201D"; }
+        .pull-quote cite {
+            font-size: 12px;
+            color: var(--sepia);
+            font-style: normal;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        /* ======= FOOTER ======= */
+        .footer-rule {
+            margin: 0 48px;
+            border-top: 3px double var(--walnut);
+        }
+
+        .footer {
+            background: var(--walnut);
+            padding: 28px 48px;
+            text-align: center;
+        }
+
+        .footer-links {
+            margin-bottom: 12px;
+        }
+        .footer-links a {
+            font-family: Georgia, serif;
+            font-size: 11px;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--gold);
+            text-decoration: none;
+            padding: 0 10px;
+        }
+        .footer-links a:hover { color: var(--parchment); }
+
+        .footer-copy {
+            font-size: 11px;
+            color: var(--khaki);
+            font-style: italic;
+        }
+
+        /* ======= RESPONSIVE ======= */
+        @media (max-width: 680px) {
+            .newspaper { border: none; }
+            .masthead, .hero, .columns, .categories, .pricing,
+            .sample-brief, .pull-quote, .section-label, .ornament,
+            .nav-bar, .footer {
+                padding-left: 20px;
+                padding-right: 20px;
+            }
+            .sample-brief { margin-left: 20px; margin-right: 20px; }
+            .footer-rule { margin: 0 20px; }
+            .columns { grid-template-columns: 1fr; }
+            .column { border-left: none; border-bottom: 1px solid var(--cream); }
+            .column:last-child { border-bottom: none; }
+            .cat-grid { grid-template-columns: 1fr; }
+            .cat-item { border-right: none; }
+            .pricing-cards { grid-template-columns: 1fr; }
+            .pull-quote { padding: 32px 20px; }
+            .signup-form input[type="email"] { width: 100%; }
+            .nav-bar a { padding: 0 8px; font-size: 10px; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="newspaper">
+
+    <!-- ========== MASTHEAD ========== -->
+    <header class="masthead">
+        <div class="masthead-rule-top"></div>
+        <div class="masthead-dateline">Est. 2026 &bull; For Licensed Mental Health Professionals</div>
+        <h1 class="masthead-title">The Therapist Brief</h1>
+        <div class="masthead-tagline">Evidence-Based Research for the Practicing Clinician</div>
+        <div class="masthead-rule-bottom"></div>
+    </header>
+
+    <!-- ========== NAV ========== -->
+    <nav class="nav-bar">
+        <a href="#about">About</a>
+        <a href="#sample">Sample</a>
+        <a href="#categories">Topics</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#subscribe">Subscribe</a>
+    </nav>
+
+    <!-- ========== RESEARCH QUOTE ========== -->
+    <div class="research-quote">
+        <blockquote>&ldquo;Research shows therapist outcomes don&rsquo;t improve with experience alone. Intentional, ongoing learning does.&rdquo;</blockquote>
+        <cite>(Goldberg et al., 2016)</cite>
+    </div>
+
+    <!-- ========== HERO ========== -->
+    <section class="hero" id="about">
+        <div class="hero-kicker">Subscriptions Available Soon</div>
+        <h2>Research you can use,<br>in the time you actually have.</h2>
+        <p>One brief per day. One study. Key findings, clinical implications, and limitations &mdash; all in 3 minutes or less. Built for therapists, by therapists.</p>
+        <form class="signup-form" id="subscribe">
+            <input type="email" placeholder="your@email.com" required>
+            <button type="submit">Subscribe Free</button>
+        </form>
+        <div class="signup-note">Free tier: 1 brief per week. Upgrade anytime.</div>
+    </section>
+
+    <!-- ========== DIVIDER ========== -->
+    <div class="ornament">
+        <div class="ornament-line"></div>
+        <div class="ornament-diamond">&diams;</div>
+        <div class="ornament-line"></div>
+    </div>
+
+    <!-- ========== WHAT YOU GET ========== -->
+    <div class="section-label">
+        <span>What You Receive</span>
+    </div>
+
+    <div class="columns">
+        <div class="column">
+            <div class="column-icon">&para;</div>
+            <h3>Key Finding</h3>
+            <p>The primary takeaway in 1&ndash;2 sentences, written in plain clinical language with appropriate hedging.</p>
+        </div>
+        <div class="column">
+            <div class="column-icon">&sect;</div>
+            <h3>Why It Matters</h3>
+            <p>Direct clinical application for your practice. What to consider, what to try, and what to watch for.</p>
+        </div>
+        <div class="column">
+            <div class="column-icon">&Dagger;</div>
+            <h3>Study Details &amp; Limits</h3>
+            <p>Sample size, study type, and specific limitations. No vague language &mdash; real methodological context.</p>
+        </div>
+    </div>
+
+    <!-- ========== DIVIDER ========== -->
+    <div class="ornament">
+        <div class="ornament-line"></div>
+        <div class="ornament-diamond">&diams;</div>
+        <div class="ornament-line"></div>
+    </div>
+
+    <!-- ========== SAMPLE BRIEF ========== -->
+    <div class="section-label" id="sample">
+        <span>Sample Brief Previously Sent to Our Community</span>
+    </div>
+
+    <div class="sample-brief">
+        <div class="sample-brief-label">DSM-5 Disorders &bull; Bipolar &amp; Related Disorders</div>
+        <h3>Integrating IPSRT, FFT, and Mindfulness with CBT May Strengthen Relapse Prevention in Bipolar Disorder</h3>
+
+        <div class="sample-brief-tag">Key Finding</div>
+        <p>A narrative review suggests that combining CBT, Interpersonal and Social Rhythm Therapy (IPSRT), Family-Focused Therapy (FFT), and mindfulness-based interventions may improve symptom management and reduce relapse risk in clients with bipolar disorder beyond what any single modality offers. Psychoeducation embedded within family therapy appears particularly important for improving treatment adherence and daily functioning.</p>
+
+        <div class="sample-brief-tag">Why It Matters</div>
+        <p>Clinicians working with clients who have bipolar disorder might consider structuring adjunctive psychotherapy around two parallel tracks: IPSRT&rsquo;s sleep-wake cycle stabilization and social rhythm monitoring alongside CBT work targeting cognitive distortions, rather than treating these as sequential. For families involved in care, FFT&rsquo;s psychoeducation component &mdash; specifically helping family members identify early warning signs of mood episodes &mdash; may directly support medication adherence between sessions. When a client has plateaued in individual therapy, adding a family psychoeducation component using FFT protocols could be a concrete next step worth exploring.</p>
+
+        <div class="sample-brief-tag">Limitations</div>
+        <p>As a narrative short communication rather than a systematic review or meta-analysis, this paper does not report a structured search methodology, making it susceptible to selection bias in the evidence reviewed. No primary data were collected, and no effect sizes or head-to-head comparisons of the proposed integrative model are provided.</p>
+
+        <cite>Milic, J., et al. (2025). Short communication on proposed treatment directions in bipolar disorder: A psychotherapy perspective. Journal of Clinical Medicine, 14(6), 1857. https://doi.org/10.3390/jcm14061857</cite>
+    </div>
+
+    <!-- ========== DIVIDER ========== -->
+    <div class="ornament">
+        <div class="ornament-line"></div>
+        <div class="ornament-diamond">&diams;</div>
+        <div class="ornament-line"></div>
+    </div>
+
+    <!-- ========== CATEGORIES ========== -->
+    <div class="section-label" id="categories">
+        <span>27 Topics Across 4 Categories</span>
+    </div>
+
+    <div class="categories">
+        <div class="cat-grid">
+            <div class="cat-item">
+                <h4>Therapeutic Approaches</h4>
+                <p>CBT, DBT, EMDR, ACT, IFS, Motivational Interviewing, Psychodynamic, SFBT</p>
+            </div>
+            <div class="cat-item">
+                <h4>DSM-5 Disorders</h4>
+                <p>Anxiety, Depression, PTSD, ADHD, Bipolar, Personality Disorders, Substance Use</p>
+            </div>
+            <div class="cat-item">
+                <h4>Counselor Wellness</h4>
+                <p>Compassion Fatigue, Vicarious Trauma, Self-Care, Work-Life Balance, Supervision, Mindfulness</p>
+            </div>
+            <div class="cat-item">
+                <h4>Specific Populations</h4>
+                <p>Children, Veterans, LGBTQ+, Older Adults, Culturally Diverse, Clients with Disabilities</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ========== DIVIDER ========== -->
+    <div class="ornament">
+        <div class="ornament-line"></div>
+        <div class="ornament-diamond">&diams;</div>
+        <div class="ornament-line"></div>
+    </div>
+
+    <!-- ========== DIVIDER ========== -->
+    <div class="ornament">
+        <div class="ornament-line"></div>
+        <div class="ornament-diamond">&diams;</div>
+        <div class="ornament-line"></div>
+    </div>
+
+    <!-- ========== PRICING ========== -->
+    <div class="section-label" id="pricing">
+        <span>Choose Your Plan</span>
+    </div>
+
+    <div class="pricing">
+        <div class="pricing-cards">
+            <div class="price-card">
+                <h3>Free</h3>
+                <div class="price">$0<span>/mo</span></div>
+                <div class="price-desc">Start here</div>
+                <ul>
+                    <li>1 brief per week (Mondays)</li>
+                    <li>Choose your Monday topic</li>
+                    <li>Full citation included</li>
+                    <li>Link to original paper</li>
+                </ul>
+                <a href="#subscribe" class="cta cta-secondary">Get Started</a>
+            </div>
+            <div class="price-card featured">
+                <h3>Professional</h3>
+                <div class="price">$9<span>/mo</span></div>
+                <div class="price-desc">or $89/year (save 17%)</div>
+                <ul>
+                    <li>7 briefs per week (daily)</li>
+                    <li>Choose a topic for each day</li>
+                    <li>Full citation included</li>
+                    <li>Link to original paper</li>
+                    <li>Access to full archive</li>
+                </ul>
+                <a href="#subscribe" class="cta cta-primary">Subscribe Now</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- ========== FINAL CTA ========== -->
+    <div class="ornament">
+        <div class="ornament-line"></div>
+        <div class="ornament-diamond">&diams;</div>
+        <div class="ornament-line"></div>
+    </div>
+
+    <section class="hero" style="padding-top:36px;padding-bottom:48px;">
+        <h2>Stay current. Stay grounded. Stay brief.</h2>
+        <p>Join hundreds of clinicians who start their morning with evidence.</p>
+        <form class="signup-form">
+            <input type="email" placeholder="your@email.com" required>
+            <button type="submit">Subscribe Free</button>
+        </form>
+    </section>
+
+    <!-- ========== FOOTER ========== -->
+    <div class="footer-rule"></div>
+    <footer class="footer">
+        <div class="footer-links">
+            <a href="#about">About</a>
+            <a href="mailto:hello@thetherapistbrief.com">Contact</a>
+            <a href="#privacy">Privacy</a>
+            <a href="#terms">Terms</a>
+        </div>
+        <div class="footer-copy">&copy; 2026 The Therapist Brief &bull; All rights reserved</div>
+    </footer>
+
+</div>
+
+</body>
+</html>
