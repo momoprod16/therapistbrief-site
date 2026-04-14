@@ -110,7 +110,31 @@
         }
         .nav-bar a:hover { color: var(--walnut); }
 
-        /* ======= HERO ======= */
+        /* ======= RESEARCH QUOTE ======= */
+        .research-quote {
+            padding: 28px 48px 24px;
+            text-align: center;
+            border-bottom: 1px solid var(--cream);
+            background: var(--parchment);
+        }
+
+        .research-quote blockquote {
+            font-size: 17px;
+            font-style: italic;
+            color: var(--walnut-soft);
+            max-width: 560px;
+            margin: 0 auto 8px;
+            line-height: 1.65;
+        }
+
+        .research-quote cite {
+            font-size: 12px;
+            color: var(--sepia-light);
+            font-style: normal;
+            letter-spacing: 0.5px;
+        }
+
+        /* ======= HERO / WIZARD CONTAINER ======= */
         .hero {
             padding: 56px 48px 40px;
             text-align: center;
@@ -144,86 +168,6 @@
             max-width: 520px;
             margin: 0 auto 36px;
             line-height: 1.75;
-        }
-
-        /* ======= RESEARCH QUOTE ======= */
-        .research-quote {
-            padding: 28px 48px 24px;
-            text-align: center;
-            border-bottom: 1px solid var(--cream);
-            background: var(--parchment);
-        }
-
-        .research-quote blockquote {
-            font-size: 17px;
-            font-style: italic;
-            color: var(--walnut-soft);
-            max-width: 560px;
-            margin: 0 auto 8px;
-            line-height: 1.65;
-        }
-
-        .research-quote cite {
-            font-size: 12px;
-            color: var(--sepia-light);
-            font-style: normal;
-            letter-spacing: 0.5px;
-        }
-
-        /* ======= SIGNUP FORM ======= */
-        .signup-form {
-            display: flex;
-            gap: 10px;
-            justify-content: center;
-            flex-wrap: wrap;
-            max-width: 500px;
-            margin: 0 auto;
-        }
-
-        .signup-form input[type="email"] {
-            font-family: Georgia, serif;
-            font-size: 15px;
-            padding: 14px 20px;
-            border: 1px solid var(--cream);
-            background: var(--ivory);
-            color: var(--walnut-soft);
-            border-radius: 2px;
-            width: 300px;
-            outline: none;
-            transition: border-color 0.2s;
-        }
-        .signup-form input[type="email"]:focus {
-            border-color: var(--gold);
-        }
-        .signup-form input[type="email"]::placeholder {
-            color: var(--sepia-light);
-            font-style: italic;
-        }
-
-        .signup-form button {
-            font-family: Georgia, serif;
-            font-size: 12px;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            font-weight: 700;
-            padding: 14px 28px;
-            background: var(--brown);
-            color: var(--ivory);
-            border: none;
-            border-radius: 2px;
-            border-bottom: 3px solid #4A2618;
-            cursor: pointer;
-            transition: background 0.2s;
-        }
-        .signup-form button:hover {
-            background: var(--brown-hover);
-        }
-
-        .signup-note {
-            margin-top: 14px;
-            font-size: 11px;
-            color: var(--sepia-light);
-            font-style: italic;
         }
 
         /* ======= ORNAMENTAL DIVIDER ======= */
@@ -541,12 +485,380 @@
             font-style: italic;
         }
 
+        /* ======= WIZARD STYLES ======= */
+        .wizard-step {
+            display: none;
+        }
+        .wizard-step.active {
+            display: block;
+        }
+
+        .wizard-progress {
+            font-size: 11px;
+            color: var(--sepia-light);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+        }
+
+        .wizard-back {
+            display: inline-block;
+            font-size: 12px;
+            color: var(--brown);
+            text-decoration: none;
+            cursor: pointer;
+            margin-bottom: 20px;
+            transition: color 0.2s;
+            background: none;
+            border: none;
+            font-family: Georgia, serif;
+        }
+        .wizard-back:hover {
+            color: var(--brown-hover);
+        }
+
+        /* Wizard email form */
+        .wizard-email-form {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            flex-wrap: wrap;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .wizard-email-form input[type="email"] {
+            font-family: Georgia, serif;
+            font-size: 15px;
+            padding: 14px 20px;
+            border: 1px solid var(--cream);
+            background: var(--ivory);
+            color: var(--walnut-soft);
+            border-radius: 2px;
+            width: 300px;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+        .wizard-email-form input[type="email"]:focus {
+            border-color: var(--gold);
+        }
+        .wizard-email-form input[type="email"]::placeholder {
+            color: var(--sepia-light);
+            font-style: italic;
+        }
+
+        .wizard-btn {
+            font-family: Georgia, serif;
+            font-size: 12px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            font-weight: 700;
+            padding: 14px 28px;
+            background: var(--brown);
+            color: var(--ivory);
+            border: none;
+            border-radius: 2px;
+            border-bottom: 3px solid #4A2618;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        .wizard-btn:hover {
+            background: var(--brown-hover);
+        }
+        .wizard-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .wizard-btn-secondary {
+            background: transparent;
+            color: var(--brown);
+            border: 1px solid var(--brown);
+            border-bottom: 1px solid var(--brown);
+        }
+        .wizard-btn-secondary:hover {
+            background: var(--parchment);
+        }
+
+        .wizard-note {
+            margin-top: 14px;
+            font-size: 11px;
+            color: var(--sepia-light);
+            font-style: italic;
+        }
+
+        .wizard-error {
+            color: #b33;
+            font-size: 13px;
+            margin-top: 10px;
+            min-height: 18px;
+        }
+
+        /* Tier cards */
+        .tier-cards {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+            max-width: 560px;
+            margin: 0 auto 20px;
+        }
+
+        .tier-card {
+            border: 1px solid var(--cream);
+            padding: 28px 20px;
+            text-align: center;
+            cursor: pointer;
+            transition: border-color 0.2s, background 0.2s;
+            position: relative;
+        }
+        .tier-card:hover {
+            background: var(--parchment);
+        }
+        .tier-card.featured {
+            border: 2px solid var(--gold);
+        }
+        .tier-card.featured::before {
+            content: "RECOMMENDED";
+            position: absolute;
+            top: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--gold);
+            color: var(--walnut);
+            font-size: 9px;
+            letter-spacing: 1.5px;
+            font-weight: 700;
+            padding: 3px 12px;
+            border-radius: 2px;
+        }
+        .tier-card h3 {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--walnut);
+            margin-bottom: 4px;
+        }
+        .tier-card .tier-price {
+            font-size: 32px;
+            font-weight: 700;
+            color: var(--brown);
+            margin: 12px 0 4px;
+        }
+        .tier-card .tier-price span {
+            font-size: 14px;
+            color: var(--sepia);
+            font-weight: 400;
+        }
+        .tier-card .tier-desc {
+            font-size: 13px;
+            color: var(--sepia);
+            font-style: italic;
+            margin-bottom: 16px;
+        }
+        .tier-card ul {
+            list-style: none;
+            margin-bottom: 20px;
+            text-align: left;
+        }
+        .tier-card ul li {
+            font-size: 13px;
+            color: var(--walnut-soft);
+            padding: 5px 0;
+            border-bottom: 1px dotted var(--cream);
+        }
+        .tier-card ul li:last-child {
+            border-bottom: none;
+        }
+
+        /* Topic grid */
+        .wizard-topic-group {
+            margin-bottom: 24px;
+        }
+        .wizard-topic-group h3 {
+            font-size: 12px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--brown);
+            font-weight: 700;
+            padding: 8px 0;
+            border-top: 1px solid var(--gold);
+            border-bottom: 1px solid var(--gold);
+            text-align: center;
+            margin-bottom: 0;
+        }
+        .wizard-topic-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 0;
+        }
+        .wizard-topic-item {
+            padding: 12px 16px;
+            border: 1px solid var(--cream);
+            cursor: pointer;
+            transition: background 0.15s, border-color 0.15s;
+            position: relative;
+        }
+        .wizard-topic-item:hover {
+            background: var(--parchment);
+        }
+        .wizard-topic-item.selected {
+            background: var(--parchment);
+            border-color: var(--gold);
+            border-width: 2px;
+        }
+        .wizard-topic-item.disabled {
+            opacity: 0.4;
+            cursor: not-allowed;
+        }
+        .wizard-topic-item.disabled:hover {
+            background: transparent;
+        }
+        .wizard-topic-item h4 {
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--walnut);
+            margin-bottom: 2px;
+        }
+        .wizard-topic-item .wt-day-label {
+            font-size: 11px;
+            color: var(--gold);
+            font-weight: 700;
+        }
+        .wizard-topic-item .wt-day-selector {
+            margin-top: 8px;
+            display: none;
+        }
+        .wizard-topic-item.selected .wt-day-selector {
+            display: block;
+        }
+        .wizard-topic-item .wt-day-selector select {
+            font-family: Georgia, serif;
+            font-size: 12px;
+            padding: 4px 8px;
+            border: 1px solid var(--cream);
+            background: var(--ivory);
+            color: var(--walnut-soft);
+            border-radius: 2px;
+        }
+
+        .wizard-count-bar {
+            text-align: center;
+            font-size: 13px;
+            color: var(--sepia);
+            margin-bottom: 20px;
+            padding: 10px;
+            background: var(--parchment);
+            border-radius: 2px;
+        }
+        .wizard-count-bar strong {
+            color: var(--walnut);
+        }
+
+        /* Checkout summary */
+        .checkout-summary {
+            max-width: 440px;
+            margin: 0 auto 24px;
+            text-align: left;
+        }
+        .checkout-summary-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            border-bottom: 1px dotted var(--cream);
+            font-size: 14px;
+        }
+        .checkout-summary-row .cs-day {
+            color: var(--sepia);
+            font-weight: 700;
+            min-width: 100px;
+        }
+        .checkout-summary-row .cs-topic {
+            color: var(--walnut);
+        }
+
+        .promo-field {
+            max-width: 440px;
+            margin: 0 auto 24px;
+        }
+        .promo-field label {
+            display: block;
+            font-size: 12px;
+            color: var(--sepia);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            font-weight: 700;
+            margin-bottom: 6px;
+        }
+        .promo-field input[type="text"] {
+            font-family: Georgia, serif;
+            font-size: 15px;
+            padding: 12px 16px;
+            border: 1px solid var(--cream);
+            background: var(--ivory);
+            color: var(--walnut-soft);
+            border-radius: 2px;
+            width: 100%;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+        .promo-field input[type="text"]:focus {
+            border-color: var(--gold);
+        }
+        .promo-field input[type="text"]::placeholder {
+            color: var(--sepia-light);
+            font-style: italic;
+        }
+
+        /* Confirmation */
+        .confirm-check {
+            font-size: 48px;
+            color: var(--gold);
+            margin-bottom: 16px;
+        }
+        .confirm-topic {
+            font-size: 15px;
+            color: var(--sepia);
+            margin-bottom: 24px;
+            line-height: 1.65;
+        }
+        .confirm-link {
+            display: inline-block;
+            font-size: 13px;
+            color: var(--brown);
+            text-decoration: underline;
+            margin: 6px 8px;
+            transition: color 0.2s;
+        }
+        .confirm-link:hover {
+            color: var(--brown-hover);
+        }
+
+        /* Bottom CTA simplified */
+        .bottom-cta {
+            padding: 36px 48px 48px;
+            text-align: center;
+        }
+        .bottom-cta h2 {
+            font-size: clamp(24px, 3.5vw, 38px);
+            font-weight: 700;
+            color: var(--walnut);
+            line-height: 1.3;
+            max-width: 600px;
+            margin: 0 auto 16px;
+        }
+        .bottom-cta p {
+            font-size: 17px;
+            color: var(--sepia);
+            max-width: 520px;
+            margin: 0 auto 24px;
+            line-height: 1.75;
+        }
+
         /* ======= RESPONSIVE ======= */
         @media (max-width: 680px) {
             .newspaper { border: none; }
             .masthead, .hero, .columns, .categories, .pricing,
             .sample-brief, .pull-quote, .section-label, .ornament,
-            .nav-bar, .footer {
+            .nav-bar, .footer, .bottom-cta {
                 padding-left: 20px;
                 padding-right: 20px;
             }
@@ -559,8 +871,12 @@
             .cat-item { border-right: none; }
             .pricing-cards { grid-template-columns: 1fr; }
             .pull-quote { padding: 32px 20px; }
-            .signup-form input[type="email"] { width: 100%; }
+            .wizard-email-form input[type="email"] { width: 100%; }
             .nav-bar a { padding: 0 8px; font-size: 10px; }
+            .tier-cards { grid-template-columns: 1fr; gap: 16px; }
+        }
+        @media (max-width: 600px) {
+            .wizard-topic-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
@@ -592,16 +908,100 @@
         <cite>(Goldberg et al., 2016)</cite>
     </div>
 
-    <!-- ========== HERO ========== -->
+    <!-- ========== HERO / SIGNUP WIZARD ========== -->
     <section class="hero" id="about">
         <div class="hero-kicker">Now Accepting Subscribers</div>
         <h2>Research you can use,<br>in the time you actually have.</h2>
         <p>One brief per day. One study. Key findings, clinical implications, and limitations &mdash; all in 3 minutes or less. Built for therapists, by therapists.</p>
-        <form class="signup-form" id="subscribe">
-            <input type="email" placeholder="your@email.com" required>
-            <button type="submit">Subscribe Free</button>
-        </form>
-        <div class="signup-note" id="msg-top">Free tier: 1 brief per week. Upgrade anytime.</div>
+
+        <div id="subscribe">
+            <!-- STEP 1: Email -->
+            <div id="step-email" class="wizard-step active">
+                <div class="wizard-progress">Step 1 of 3</div>
+                <form class="wizard-email-form" id="email-form">
+                    <input type="email" id="wizard-email" placeholder="your@email.com" required>
+                    <button type="submit" class="wizard-btn" id="email-btn">Get Started</button>
+                </form>
+                <div class="wizard-note">Free tier: 1 brief per week. Upgrade anytime.</div>
+                <div class="wizard-error" id="email-error"></div>
+            </div>
+
+            <!-- STEP 2: Choose Tier -->
+            <div id="step-tier" class="wizard-step">
+                <div class="wizard-progress">Step 2 of 3</div>
+                <button class="wizard-back" id="back-to-email">&larr; Back</button>
+                <h3 style="font-size:20px;color:var(--walnut);margin-bottom:24px;">Choose Your Plan</h3>
+                <div class="tier-cards">
+                    <div class="tier-card" id="tier-free-card">
+                        <h3>Free</h3>
+                        <div class="tier-price">$0<span>/mo</span></div>
+                        <div class="tier-desc">Start here</div>
+                        <ul>
+                            <li>1 brief per week (Mondays)</li>
+                            <li>Choose your Monday topic</li>
+                            <li>Full citation included</li>
+                        </ul>
+                        <button class="wizard-btn wizard-btn-secondary" id="select-free">Select Free</button>
+                    </div>
+                    <div class="tier-card featured" id="tier-paid-card">
+                        <h3>Professional</h3>
+                        <div class="tier-price">$9<span>/mo</span></div>
+                        <div class="tier-desc">Daily research briefs</div>
+                        <ul>
+                            <li>7 briefs per week (daily)</li>
+                            <li>Choose a topic for each day</li>
+                            <li>Full citation included</li>
+                            <li>Access to full archive</li>
+                        </ul>
+                        <button class="wizard-btn" id="select-paid">Select Professional</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- STEP 3: Topics -->
+            <div id="step-topics" class="wizard-step">
+                <div class="wizard-progress" id="topics-progress">Step 3 of 3</div>
+                <button class="wizard-back" id="back-to-tier">&larr; Back</button>
+                <h3 id="topics-heading" style="font-size:20px;color:var(--walnut);margin-bottom:16px;"></h3>
+                <div class="wizard-count-bar" id="topics-count-bar">
+                    <strong id="topics-count">0</strong> of <strong id="topics-max">1</strong> topics selected
+                </div>
+                <div id="topics-container"></div>
+                <div style="text-align:center;margin-top:24px;">
+                    <button class="wizard-btn" id="topics-continue-btn" disabled>Continue</button>
+                </div>
+                <div class="wizard-error" id="topics-error" style="text-align:center;"></div>
+            </div>
+
+            <!-- STEP 4: Checkout (paid only) -->
+            <div id="step-checkout" class="wizard-step">
+                <div class="wizard-progress">Step 4 of 4</div>
+                <button class="wizard-back" id="back-to-topics">&larr; Back</button>
+                <h3 style="font-size:20px;color:var(--walnut);margin-bottom:20px;">Review &amp; Subscribe</h3>
+                <div class="checkout-summary" id="checkout-summary"></div>
+                <div class="promo-field">
+                    <label for="promo-input">Promo Code (optional)</label>
+                    <input type="text" id="promo-input" placeholder="Enter promo code">
+                </div>
+                <div style="text-align:center;">
+                    <button class="wizard-btn" id="checkout-btn">Subscribe &mdash; $9/month</button>
+                </div>
+                <div class="wizard-error" id="checkout-error" style="text-align:center;"></div>
+            </div>
+
+            <!-- STEP 5: Confirmation (free path) -->
+            <div id="step-confirm" class="wizard-step">
+                <div class="confirm-check">&#10003;</div>
+                <h3 style="font-size:24px;color:var(--walnut);margin-bottom:12px;">You're subscribed!</h3>
+                <p class="confirm-topic" id="confirm-message"></p>
+                <div>
+                    <a class="confirm-link" id="confirm-upgrade" href="#">Want daily briefs? Upgrade to Professional</a>
+                </div>
+                <div>
+                    <a class="confirm-link" id="confirm-manage" href="preferences.html">Manage your preferences</a>
+                </div>
+            </div>
+        </div>
     </section>
 
     <!-- ========== DIVIDER ========== -->
@@ -751,14 +1151,10 @@
         <div class="ornament-line"></div>
     </div>
 
-    <section class="hero" style="padding-top:36px;padding-bottom:48px;">
+    <section class="bottom-cta">
         <h2>Stay current. Stay grounded. Stay brief.</h2>
         <p>Join hundreds of clinicians who start their morning with evidence.</p>
-        <form class="signup-form" id="subscribe-bottom">
-            <input type="email" placeholder="your@email.com" required>
-            <button type="submit">Subscribe Free</button>
-        </form>
-        <div class="signup-note" id="msg-bottom"></div>
+        <a href="#subscribe" class="wizard-btn">Ready to Subscribe?</a>
     </section>
 
     <!-- ========== FOOTER ========== -->
@@ -779,50 +1175,583 @@
 (function() {
     var API = "https://api.thetherapistbrief.com";
 
-    function handleSubscribe(form, msgEl) {
-        form.addEventListener("submit", function(e) {
-            e.preventDefault();
-            var email = form.querySelector("input[type=email]").value.trim();
-            var btn = form.querySelector("button");
-            if (!email) return;
+    /* ===== State ===== */
+    var userEmail = "";
+    var subscriberId = "";
+    var chosenTier = "free";
+    var selectedTopics = {};
 
-            btn.disabled = true;
-            btn.textContent = "Submitting\u2026";
-            msgEl.textContent = "";
+    /* ===== Constants ===== */
+    var DAYS = ["monday","tuesday","wednesday","thursday","friday","saturday","sunday"];
+    var DAY_LABELS = {
+        "monday": "Monday",
+        "tuesday": "Tuesday",
+        "wednesday": "Wednesday",
+        "thursday": "Thursday",
+        "friday": "Friday",
+        "saturday": "Saturday",
+        "sunday": "Sunday"
+    };
 
-            fetch(API + "/subscribe", {
-                method: "POST",
-                headers: {"Content-Type": "application/json"},
-                body: JSON.stringify({email: email})
-            })
-            .then(function(r) { return r.json().then(function(d) { return {ok: r.ok, data: d}; }); })
-            .then(function(res) {
-                if (res.ok) {
-                    msgEl.style.color = "var(--brown)";
-                    msgEl.textContent = res.data.message + " Redirecting to choose your topics\u2026";
+    var TOPIC_LABELS = {
+        "cbt": "CBT",
+        "dbt": "DBT",
+        "emdr": "EMDR",
+        "act": "ACT",
+        "ifs": "IFS",
+        "motivational-interviewing": "Motivational Interviewing",
+        "psychodynamic": "Psychodynamic",
+        "sfbt": "SFBT",
+        "anxiety": "Anxiety",
+        "depression": "Depression",
+        "ptsd": "PTSD",
+        "adhd": "ADHD",
+        "bipolar": "Bipolar",
+        "personality-disorders": "Personality Disorders",
+        "substance-use": "Substance Use",
+        "compassion-fatigue": "Compassion Fatigue",
+        "vicarious-trauma": "Vicarious Trauma",
+        "self-care": "Self-Care",
+        "work-life-balance": "Work-Life Balance",
+        "supervision": "Supervision",
+        "mindfulness": "Mindfulness",
+        "children": "Children & Adolescents",
+        "veterans": "Veterans & Military",
+        "lgbtq": "LGBTQ+",
+        "older-adults": "Older Adults",
+        "culturally-diverse": "Culturally Diverse",
+        "disabilities": "Clients with Disabilities"
+    };
+
+    var GROUP_ORDER = [
+        "therapeutic-approaches",
+        "dsm5-disorders",
+        "counselor-wellness",
+        "specific-populations"
+    ];
+
+    var GROUP_LABELS = {
+        "therapeutic-approaches": "Therapeutic Approaches",
+        "dsm5-disorders": "DSM-5 Disorders",
+        "counselor-wellness": "Counselor Wellness",
+        "specific-populations": "Specific Populations"
+    };
+
+    var TOPIC_GROUPS = {
+        "therapeutic-approaches": [
+            "cbt","dbt","emdr","act","ifs",
+            "motivational-interviewing","psychodynamic","sfbt"
+        ],
+        "dsm5-disorders": [
+            "anxiety","depression","ptsd","adhd",
+            "bipolar","personality-disorders","substance-use"
+        ],
+        "counselor-wellness": [
+            "compassion-fatigue","vicarious-trauma","self-care",
+            "work-life-balance","supervision","mindfulness"
+        ],
+        "specific-populations": [
+            "children","veterans","lgbtq",
+            "older-adults","culturally-diverse","disabilities"
+        ]
+    };
+
+    /* ===== DOM refs ===== */
+    var wizardEl = document.getElementById("subscribe");
+
+    /* ===== Step navigation ===== */
+    function showStep(id) {
+        var steps = wizardEl.querySelectorAll(".wizard-step");
+        for (var i = 0; i < steps.length; i++) {
+            steps[i].classList.remove("active");
+        }
+        var target = document.getElementById(id);
+        if (target) {
+            target.classList.add("active");
+        }
+        /* Scroll to top of wizard */
+        var rect = wizardEl.getBoundingClientRect();
+        var scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        var targetY = rect.top + scrollTop - 20;
+        window.scrollTo({ top: targetY, behavior: "smooth" });
+    }
+
+    /* ===== Helpers ===== */
+    function getMaxTopics() {
+        return chosenTier === "paid" ? 7 : 1;
+    }
+
+    function getSelectedCount() {
+        var n = 0;
+        for (var k in selectedTopics) {
+            if (selectedTopics.hasOwnProperty(k)) n++;
+        }
+        return n;
+    }
+
+    function getUsedDays() {
+        var used = {};
+        for (var slug in selectedTopics) {
+            if (selectedTopics.hasOwnProperty(slug)) {
+                used[selectedTopics[slug]] = true;
+            }
+        }
+        return used;
+    }
+
+    function getAvailableDays(currentSlug) {
+        var used = getUsedDays();
+        var avail = [];
+        for (var i = 0; i < DAYS.length; i++) {
+            var d = DAYS[i];
+            if (!used[d] || (currentSlug && selectedTopics[currentSlug] === d)) {
+                avail.push(d);
+            }
+        }
+        return avail;
+    }
+
+    /* ==============================
+       STEP 1: Email
+       ============================== */
+    var emailForm = document.getElementById("email-form");
+    var emailInput = document.getElementById("wizard-email");
+    var emailBtn = document.getElementById("email-btn");
+    var emailError = document.getElementById("email-error");
+
+    emailForm.addEventListener("submit", function(e) {
+        e.preventDefault();
+        var email = emailInput.value.trim();
+        if (!email) return;
+
+        emailBtn.disabled = true;
+        emailBtn.textContent = "Submitting\u2026";
+        emailError.textContent = "";
+
+        fetch(API + "/subscribe", {
+            method: "POST",
+            headers: {"Content-Type": "application/json"},
+            body: JSON.stringify({email: email})
+        })
+        .then(function(r) {
+            return r.json().then(function(d) { return {ok: r.ok, status: r.status, data: d}; });
+        })
+        .then(function(res) {
+            emailBtn.disabled = false;
+            emailBtn.textContent = "Get Started";
+
+            if (res.ok) {
+                userEmail = email;
+                subscriberId = res.data.subscriber_id || "";
+                var returnedTier = (res.data.tier || "free").toLowerCase();
+
+                /* If returning paid user, send to preferences */
+                if (returnedTier === "paid" || returnedTier === "premium") {
+                    emailError.style.color = "var(--brown)";
+                    emailError.textContent = "Welcome back! Redirecting to manage your topics\u2026";
                     setTimeout(function() {
                         window.location.href = "preferences.html?email=" + encodeURIComponent(email);
-                    }, 1200);
+                    }, 1000);
+                    return;
+                }
+
+                showStep("step-tier");
+            } else {
+                emailError.style.color = "#b33";
+                emailError.textContent = res.data.error || "Something went wrong. Please try again.";
+            }
+        })
+        .catch(function() {
+            emailBtn.disabled = false;
+            emailBtn.textContent = "Get Started";
+            emailError.style.color = "#b33";
+            emailError.textContent = "Connection error. Please try again.";
+        });
+    });
+
+    /* ==============================
+       STEP 2: Tier selection
+       ============================== */
+    document.getElementById("back-to-email").addEventListener("click", function() {
+        showStep("step-email");
+    });
+
+    document.getElementById("select-free").addEventListener("click", function() {
+        chosenTier = "free";
+        selectedTopics = {};
+        renderTopicStep();
+        showStep("step-topics");
+    });
+
+    document.getElementById("select-paid").addEventListener("click", function() {
+        chosenTier = "paid";
+        selectedTopics = {};
+        renderTopicStep();
+        showStep("step-topics");
+    });
+
+    /* Also allow clicking the tier card itself */
+    document.getElementById("tier-free-card").addEventListener("click", function(e) {
+        if (e.target.tagName === "BUTTON") return;
+        document.getElementById("select-free").click();
+    });
+    document.getElementById("tier-paid-card").addEventListener("click", function(e) {
+        if (e.target.tagName === "BUTTON") return;
+        document.getElementById("select-paid").click();
+    });
+
+    /* ==============================
+       STEP 3: Topic selection
+       ============================== */
+    var topicsContainer = document.getElementById("topics-container");
+    var topicsCountEl = document.getElementById("topics-count");
+    var topicsMaxEl = document.getElementById("topics-max");
+    var topicsHeading = document.getElementById("topics-heading");
+    var topicsProgress = document.getElementById("topics-progress");
+    var topicsContinueBtn = document.getElementById("topics-continue-btn");
+    var topicsError = document.getElementById("topics-error");
+
+    function renderTopicStep() {
+        var maxT = getMaxTopics();
+        topicsMaxEl.textContent = maxT;
+        topicsCountEl.textContent = "0";
+
+        if (chosenTier === "paid") {
+            topicsHeading.textContent = "Select 7 topics, one for each day of the week";
+            topicsProgress.textContent = "Step 3 of 4";
+        } else {
+            topicsHeading.textContent = "Select 1 topic for your Monday brief";
+            topicsProgress.textContent = "Step 3 of 3";
+        }
+
+        topicsContinueBtn.disabled = true;
+        topicsError.textContent = "";
+        topicsContainer.innerHTML = "";
+
+        for (var gi = 0; gi < GROUP_ORDER.length; gi++) {
+            var groupKey = GROUP_ORDER[gi];
+            var topics = TOPIC_GROUPS[groupKey];
+            if (!topics) continue;
+
+            var groupDiv = document.createElement("div");
+            groupDiv.className = "wizard-topic-group";
+
+            var groupTitle = document.createElement("h3");
+            groupTitle.textContent = GROUP_LABELS[groupKey] || groupKey;
+            groupDiv.appendChild(groupTitle);
+
+            var grid = document.createElement("div");
+            grid.className = "wizard-topic-grid";
+
+            for (var ti = 0; ti < topics.length; ti++) {
+                (function(slug) {
+                    var item = document.createElement("div");
+                    item.className = "wizard-topic-item";
+                    item.setAttribute("data-topic", slug);
+
+                    var h4 = document.createElement("h4");
+                    h4.textContent = TOPIC_LABELS[slug] || slug;
+                    item.appendChild(h4);
+
+                    var dayLabel = document.createElement("span");
+                    dayLabel.className = "wt-day-label";
+                    item.appendChild(dayLabel);
+
+                    var daySelDiv = document.createElement("div");
+                    daySelDiv.className = "wt-day-selector";
+                    item.appendChild(daySelDiv);
+
+                    item.addEventListener("click", function(e) {
+                        /* Ignore clicks on the select dropdown itself */
+                        if (e.target.tagName === "SELECT") return;
+
+                        if (selectedTopics.hasOwnProperty(slug)) {
+                            /* Deselect */
+                            delete selectedTopics[slug];
+                            daySelDiv.innerHTML = "";
+                        } else {
+                            /* Select */
+                            if (getSelectedCount() >= getMaxTopics()) return;
+
+                            if (chosenTier === "free") {
+                                selectedTopics[slug] = "monday";
+                            } else {
+                                var avail = getAvailableDays(null);
+                                if (avail.length === 0) return;
+                                selectedTopics[slug] = avail[0];
+                            }
+
+                            /* Build day selector */
+                            daySelDiv.innerHTML = "";
+                            if (chosenTier === "paid") {
+                                var sel = buildDaySelect(slug);
+                                daySelDiv.appendChild(sel);
+                            }
+                        }
+
+                        updateTopicUI();
+                    });
+
+                    grid.appendChild(item);
+                })(topics[ti]);
+            }
+
+            groupDiv.appendChild(grid);
+            topicsContainer.appendChild(groupDiv);
+        }
+    }
+
+    function buildDaySelect(slug) {
+        var sel = document.createElement("select");
+        var avail = getAvailableDays(slug);
+
+        for (var i = 0; i < avail.length; i++) {
+            var opt = document.createElement("option");
+            opt.value = avail[i];
+            opt.textContent = DAY_LABELS[avail[i]];
+            sel.appendChild(opt);
+        }
+
+        sel.value = selectedTopics[slug] || (avail[0] || "");
+
+        sel.addEventListener("change", function(e) {
+            e.stopPropagation();
+            selectedTopics[slug] = sel.value;
+            updateTopicUI();
+        });
+        sel.addEventListener("click", function(e) {
+            e.stopPropagation();
+        });
+
+        return sel;
+    }
+
+    function updateTopicUI() {
+        var count = getSelectedCount();
+        var maxT = getMaxTopics();
+        topicsCountEl.textContent = count;
+        topicsMaxEl.textContent = maxT;
+        topicsContinueBtn.disabled = (count < maxT);
+
+        var items = topicsContainer.querySelectorAll(".wizard-topic-item");
+        for (var i = 0; i < items.length; i++) {
+            var el = items[i];
+            var slug = el.getAttribute("data-topic");
+            var isSelected = selectedTopics.hasOwnProperty(slug);
+
+            if (isSelected) {
+                el.classList.add("selected");
+                el.classList.remove("disabled");
+            } else {
+                el.classList.remove("selected");
+                if (count >= maxT) {
+                    el.classList.add("disabled");
                 } else {
-                    msgEl.style.color = "#b33";
-                    msgEl.textContent = res.data.error || "Something went wrong.";
-                    btn.disabled = false;
-                    btn.textContent = "Subscribe Free";
+                    el.classList.remove("disabled");
+                }
+            }
+
+            /* Update day label */
+            var dayLabelEl = el.querySelector(".wt-day-label");
+            if (isSelected && selectedTopics[slug]) {
+                dayLabelEl.textContent = DAY_LABELS[selectedTopics[slug]] || "";
+            } else {
+                dayLabelEl.textContent = "";
+            }
+
+            /* Rebuild day selectors for paid tier to reflect available days */
+            if (chosenTier === "paid" && isSelected) {
+                var dsDiv = el.querySelector(".wt-day-selector");
+                var currentVal = selectedTopics[slug];
+                dsDiv.innerHTML = "";
+                var newSel = buildDaySelect(slug);
+                newSel.value = currentVal;
+                dsDiv.appendChild(newSel);
+            }
+
+            /* Clear day selector for deselected items */
+            if (!isSelected) {
+                var dsDivOff = el.querySelector(".wt-day-selector");
+                dsDivOff.innerHTML = "";
+            }
+        }
+    }
+
+    /* Back from topics */
+    document.getElementById("back-to-tier").addEventListener("click", function() {
+        showStep("step-tier");
+    });
+
+    /* Continue from topics */
+    topicsContinueBtn.addEventListener("click", function() {
+        if (chosenTier === "free") {
+            /* Save preferences for free tier and go to confirm */
+            var freeSlug = "";
+            for (var k in selectedTopics) {
+                if (selectedTopics.hasOwnProperty(k)) {
+                    freeSlug = k;
+                    break;
+                }
+            }
+
+            var prefs = {"monday": freeSlug};
+
+            topicsContinueBtn.disabled = true;
+            topicsContinueBtn.textContent = "Saving\u2026";
+            topicsError.textContent = "";
+
+            fetch(API + "/preferences", {
+                method: "POST",
+                headers: {"Content-Type": "application/json"},
+                body: JSON.stringify({email: userEmail, preferences: prefs})
+            })
+            .then(function(r) {
+                return r.json().then(function(d) { return {ok: r.ok, data: d}; });
+            })
+            .then(function(res) {
+                topicsContinueBtn.disabled = false;
+                topicsContinueBtn.textContent = "Continue";
+
+                if (res.ok) {
+                    showConfirmation(freeSlug);
+                    showStep("step-confirm");
+                } else {
+                    topicsError.style.color = "#b33";
+                    topicsError.textContent = res.data.error || "Could not save preferences. Please try again.";
+                    topicsContinueBtn.disabled = false;
                 }
             })
             .catch(function() {
-                msgEl.style.color = "#b33";
-                msgEl.textContent = "Connection error. Please try again.";
-                btn.disabled = false;
-                btn.textContent = "Subscribe Free";
+                topicsContinueBtn.disabled = false;
+                topicsContinueBtn.textContent = "Continue";
+                topicsError.style.color = "#b33";
+                topicsError.textContent = "Connection error. Please try again.";
             });
+
+        } else {
+            /* Paid: go to checkout step */
+            renderCheckoutSummary();
+            showStep("step-checkout");
+        }
+    });
+
+    /* ==============================
+       STEP 4: Checkout (paid only)
+       ============================== */
+    var checkoutSummary = document.getElementById("checkout-summary");
+    var promoInput = document.getElementById("promo-input");
+    var checkoutBtn = document.getElementById("checkout-btn");
+    var checkoutError = document.getElementById("checkout-error");
+
+    function renderCheckoutSummary() {
+        checkoutSummary.innerHTML = "";
+
+        /* Build sorted list by day */
+        var dayTopicPairs = [];
+        for (var slug in selectedTopics) {
+            if (selectedTopics.hasOwnProperty(slug)) {
+                dayTopicPairs.push({
+                    day: selectedTopics[slug],
+                    slug: slug
+                });
+            }
+        }
+        dayTopicPairs.sort(function(a, b) {
+            return DAYS.indexOf(a.day) - DAYS.indexOf(b.day);
         });
+
+        for (var i = 0; i < dayTopicPairs.length; i++) {
+            var row = document.createElement("div");
+            row.className = "checkout-summary-row";
+
+            var daySpan = document.createElement("span");
+            daySpan.className = "cs-day";
+            daySpan.textContent = DAY_LABELS[dayTopicPairs[i].day] || dayTopicPairs[i].day;
+
+            var topicSpan = document.createElement("span");
+            topicSpan.className = "cs-topic";
+            topicSpan.textContent = TOPIC_LABELS[dayTopicPairs[i].slug] || dayTopicPairs[i].slug;
+
+            row.appendChild(daySpan);
+            row.appendChild(topicSpan);
+            checkoutSummary.appendChild(row);
+        }
     }
 
-    var top = document.getElementById("subscribe");
-    var bottom = document.getElementById("subscribe-bottom");
-    if (top) handleSubscribe(top, document.getElementById("msg-top"));
-    if (bottom) handleSubscribe(bottom, document.getElementById("msg-bottom"));
+    document.getElementById("back-to-topics").addEventListener("click", function() {
+        showStep("step-topics");
+    });
+
+    checkoutBtn.addEventListener("click", function() {
+        /* Build preferences as {day: slug} */
+        var prefs = {};
+        for (var slug in selectedTopics) {
+            if (selectedTopics.hasOwnProperty(slug)) {
+                prefs[selectedTopics[slug]] = slug;
+            }
+        }
+
+        var promoCode = promoInput.value.trim();
+
+        checkoutBtn.disabled = true;
+        checkoutBtn.textContent = "Redirecting\u2026";
+        checkoutError.textContent = "";
+
+        var body = {
+            email: userEmail,
+            preferences: prefs
+        };
+        if (promoCode) {
+            body.promo_code = promoCode;
+        }
+
+        fetch(API + "/create-checkout-session", {
+            method: "POST",
+            headers: {"Content-Type": "application/json"},
+            body: JSON.stringify(body)
+        })
+        .then(function(r) {
+            return r.json().then(function(d) { return {ok: r.ok, data: d}; });
+        })
+        .then(function(res) {
+            if (res.ok && res.data.checkout_url) {
+                window.location.href = res.data.checkout_url;
+            } else {
+                checkoutBtn.disabled = false;
+                checkoutBtn.textContent = "Subscribe \u2014 $9/month";
+                checkoutError.style.color = "#b33";
+                checkoutError.textContent = res.data.error || "Could not start checkout. Please try again.";
+            }
+        })
+        .catch(function() {
+            checkoutBtn.disabled = false;
+            checkoutBtn.textContent = "Subscribe \u2014 $9/month";
+            checkoutError.style.color = "#b33";
+            checkoutError.textContent = "Connection error. Please try again.";
+        });
+    });
+
+    /* ==============================
+       STEP 5: Confirmation (free)
+       ============================== */
+    var confirmMessage = document.getElementById("confirm-message");
+    var confirmUpgrade = document.getElementById("confirm-upgrade");
+    var confirmManage = document.getElementById("confirm-manage");
+
+    function showConfirmation(topicSlug) {
+        var topicName = TOPIC_LABELS[topicSlug] || topicSlug;
+        confirmMessage.textContent = "Your first brief arrives Monday \u2014 topic: " + topicName;
+        confirmManage.href = "preferences.html?email=" + encodeURIComponent(userEmail);
+    }
+
+    confirmUpgrade.addEventListener("click", function(e) {
+        e.preventDefault();
+        chosenTier = "paid";
+        selectedTopics = {};
+        renderTopicStep();
+        showStep("step-topics");
+    });
+
 })();
 </script>
 </body>
