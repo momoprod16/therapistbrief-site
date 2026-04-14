@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to Professional — The Therapist Brief</title>
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --ivory: #FAF6F0; --parchment: #F0E8DA; --linen: #EDE8E0;
+            --walnut: #2C1810; --walnut-soft: #3D2B1F; --brown: #6B3A2A;
+            --brown-hover: #8B4E3A; --gold: #C4A265; --sepia: #7A6555;
+            --sepia-light: #9B8A78; --cream: #D6CCBB;
+        }
+        html { scroll-behavior: smooth; }
+        body {
+            background: var(--linen); color: var(--walnut-soft);
+            font-family: Georgia, 'Times New Roman', serif; line-height: 1.7;
+        }
+        .page {
+            max-width: 680px; margin: 0 auto; background: var(--ivory);
+            min-height: 100vh; border-left: 1px solid var(--cream);
+            border-right: 1px solid var(--cream); padding: 0 48px 60px;
+        }
+        .header {
+            text-align: center; padding: 32px 0 24px;
+            border-bottom: 3px double var(--walnut); margin-bottom: 48px;
+        }
+        .header h1 { font-size: 28px; color: var(--walnut); margin-bottom: 4px; }
+        .header p { font-size: 14px; color: var(--sepia); font-style: italic; }
+        .success-icon {
+            text-align: center; font-size: 48px; color: var(--gold); margin-bottom: 24px;
+        }
+        .success-box {
+            text-align: center; padding: 40px 24px;
+        }
+        .success-box h2 {
+            font-size: 28px; color: var(--walnut); margin-bottom: 16px;
+        }
+        .success-box p {
+            font-size: 16px; color: var(--sepia); line-height: 1.7;
+            max-width: 480px; margin: 0 auto 20px;
+        }
+        .badge {
+            display: inline-block; background: var(--gold); color: var(--walnut);
+            font-size: 10px; letter-spacing: 2px; text-transform: uppercase;
+            font-weight: 700; padding: 4px 14px; border-radius: 2px; margin-bottom: 24px;
+        }
+        .next-steps {
+            background: var(--parchment); border-left: 3px solid var(--gold);
+            padding: 24px 28px; margin: 32px 0; text-align: left;
+        }
+        .next-steps h3 {
+            font-size: 14px; letter-spacing: 2px; text-transform: uppercase;
+            color: var(--brown); font-weight: 700; margin-bottom: 14px;
+        }
+        .next-steps ul {
+            list-style: none; padding: 0;
+        }
+        .next-steps li {
+            font-size: 15px; color: var(--walnut-soft); padding: 6px 0;
+            border-bottom: 1px dotted var(--cream);
+        }
+        .next-steps li:last-child { border-bottom: none; }
+        .next-steps li::before {
+            content: "\2713\0020"; color: var(--gold); font-weight: 700;
+        }
+        .cta-link {
+            display: inline-block; font-family: Georgia, serif; font-size: 12px;
+            letter-spacing: 2px; text-transform: uppercase; font-weight: 700;
+            padding: 14px 28px; background: var(--brown); color: var(--ivory);
+            text-decoration: none; border-radius: 2px; border-bottom: 3px solid #4A2618;
+            transition: background 0.2s; margin-top: 24px;
+        }
+        .cta-link:hover { background: var(--brown-hover); }
+        .home-link {
+            display: block; text-align: center; margin-top: 20px;
+            font-size: 13px; color: var(--sepia); text-decoration: none;
+        }
+        .home-link:hover { color: var(--walnut); }
+        @media (max-width: 600px) {
+            .page { padding: 0 20px 40px; border: none; }
+        }
+    </style>
+</head>
+<body>
+<div class="page">
+    <div class="header">
+        <h1>The Therapist Brief</h1>
+        <p>Evidence-Based Research for the Practicing Clinician</p>
+    </div>
+    <div class="success-box">
+        <div class="success-icon">&diams;</div>
+        <span class="badge">Professional</span>
+        <h2>Payment Successful</h2>
+        <p>Welcome to The Therapist Brief Professional. Your daily research briefs are on their way.</p>
+        <div class="next-steps">
+            <h3>What Happens Next</h3>
+            <ul>
+                <li>Your selected topics have been saved</li>
+                <li>You'll receive 7 briefs per week, one each day</li>
+                <li>Each brief covers your chosen topic for that day</li>
+                <li>You can update your topics anytime from the preferences page</li>
+            </ul>
+        </div>
+        <a class="cta-link" href="preferences.html">Manage Your Topics</a>
+        <a class="home-link" href="index.html">&larr; Back to The Therapist Brief</a>
+    </div>
+</div>
+</body>
+</html>
