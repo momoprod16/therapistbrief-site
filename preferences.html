@@ -21,10 +21,78 @@
                  min-height: 100vh; border-left: 1px solid var(--cream);
                  border-right: 1px solid var(--cream); padding: 0 48px 60px; }
 
-        .header { text-align: center; padding: 32px 0 24px;
-                   border-bottom: 3px double var(--walnut); margin-bottom: 32px; }
-        .header h1 { font-size: 28px; color: var(--walnut); margin-bottom: 4px; }
-        .header p { font-size: 14px; color: var(--sepia); font-style: italic; }
+        /* Masthead — mirrors index.html. Inner padding zeroed because .page provides it. */
+        .masthead { padding: 0; text-align: center; }
+        .masthead-rule-top {
+            border-top: 4px double var(--walnut);
+            padding-top: 4px;
+            border-bottom: 1px solid var(--walnut);
+            margin-top: 32px;
+        }
+        .masthead-dateline {
+            padding-top: 14px;
+            font-size: 10px;
+            color: var(--sepia);
+            letter-spacing: 2.5px;
+            text-transform: uppercase;
+        }
+        .masthead-title {
+            padding: 10px 0 6px;
+            font-size: clamp(28px, 5vw, 44px);
+            font-weight: 700;
+            color: var(--walnut);
+            letter-spacing: 1px;
+            line-height: 1.1;
+        }
+        .masthead-tagline {
+            font-size: 12px;
+            color: var(--sepia);
+            font-style: italic;
+            letter-spacing: 0.5px;
+            padding-bottom: 14px;
+        }
+        .masthead-rule-bottom {
+            border-top: 1px solid var(--walnut);
+            padding-top: 3px;
+            border-bottom: 3px double var(--walnut);
+        }
+        .nav-bar {
+            padding: 14px 0;
+            text-align: center;
+            border-bottom: 1px solid var(--cream);
+            margin-bottom: 28px;
+        }
+        .nav-bar a {
+            font-family: Georgia, serif;
+            font-size: 11px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--brown);
+            text-decoration: none;
+            padding: 0 12px;
+            font-weight: 700;
+            transition: color 0.2s;
+        }
+        .nav-bar a:hover { color: var(--walnut); }
+
+        .page-subtitle {
+            text-align: center;
+            font-size: 18px;
+            color: var(--walnut-soft);
+            font-style: italic;
+            font-weight: normal;
+            margin-bottom: 24px;
+        }
+
+        .back-to-home { text-align: center; margin-top: 40px;
+                          padding-top: 24px; border-top: 1px solid var(--cream); }
+        .back-to-home a { font-family: Georgia, serif; font-size: 12px;
+                            letter-spacing: 2px; text-transform: uppercase;
+                            color: var(--brown); text-decoration: none;
+                            padding: 10px 24px; border: 1px solid var(--brown);
+                            border-radius: 2px; font-weight: 700;
+                            transition: all 0.2s; display: inline-block; }
+        .back-to-home a:hover { background: var(--parchment); color: var(--walnut); }
 
         .tier-badge { display: inline-block; font-size: 10px; letter-spacing: 2px;
                       text-transform: uppercase; font-weight: 700; padding: 4px 12px;
@@ -86,10 +154,23 @@
 </head>
 <body>
 <div class="page">
-    <div class="header">
-        <h1>The Therapist Brief</h1>
-        <p>Choose your research topics</p>
-    </div>
+    <header class="masthead">
+        <div class="masthead-rule-top"></div>
+        <div class="masthead-dateline">Est. 2026 &bull; For Licensed Mental Health Professionals</div>
+        <h1 class="masthead-title">The Therapist Brief</h1>
+        <div class="masthead-tagline">Evidence-Based Research for the Practicing Clinician</div>
+        <div class="masthead-rule-bottom"></div>
+    </header>
+
+    <nav class="nav-bar">
+        <a href="/#about">About</a>
+        <a href="/#sample">Sample</a>
+        <a href="/#categories">Topics</a>
+        <a href="/#pricing">Pricing</a>
+        <a href="/#subscribe">Subscribe</a>
+    </nav>
+
+    <h2 class="page-subtitle">Choose your research topics</h2>
 
     <div style="text-align:center">
         <span class="tier-badge tier-free" id="tier-badge">Free Tier</span>
@@ -111,6 +192,10 @@
         <a class="btn-upgrade" id="upgrade-link" href="#">Upgrade to Professional</a>
     </div>
     <div class="msg" id="msg"></div>
+
+    <div class="back-to-home">
+        <a href="/">&larr; Back to home</a>
+    </div>
 </div>
 
 <script>
