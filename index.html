@@ -1,1781 +1,1144 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Therapist Brief — Evidence-Based Research for the Practicing Clinician</title>
-    <meta name="description" content="A daily research brief for licensed mental health professionals. Evidence-based findings delivered in 3 minutes or less.">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;0,800;0,900;1,500&family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400&family=Source+Serif+4:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
-    <style>
-        /* ======= RESET & BASE ======= */
-        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-
-        :root {
-            --ivory:       #FAF6F0;
-            --parchment:   #F0E8DA;
-            --linen:       #EDE8E0;
-            --walnut:      #2C1810;
-            --walnut-soft: #3D2B1F;
-            --brown:       #6B3A2A;
-            --brown-hover: #8B4E3A;
-            --gold:        #C4A265;
-            --gold-muted:  #B89A5A;
-            --sepia:       #7A6555;
-            --sepia-light: #9B8A78;
-            --khaki:       #8B7355;
-            --cream:       #D6CCBB;
-        }
-
-        html {
-            scroll-behavior: smooth;
-            /* No forced antialiasing — let the OS use subpixel rendering, which
-               is objectively sharper on most displays than -webkit-font-smoothing:antialiased. */
-        }
-
-        body {
-            background-color: var(--linen);
-            color: var(--walnut-soft);
-            font-family: "Source Serif 4", Georgia, "Times New Roman", "Palatino Linotype", serif;
-            font-size: 17px;
-            font-feature-settings: "kern", "liga", "onum";
-            font-optical-sizing: auto;
-            line-height: 1.75;
-        }
-
-        /* Display serif for editorial headlines, mirrors NYT Cheltenham feel. */
-        .masthead-title,
-        .hero h2,
-        .columns h3,
-        .categories h3,
-        .pricing h3,
-        h1, h2, h3 {
-            font-family: "Playfair Display", Georgia, "Times New Roman", serif;
-            font-feature-settings: "kern", "liga", "dlig", "onum";
-            text-rendering: optimizeLegibility;
-        }
-
-        /* ======= NEWSPAPER CONTAINER ======= */
-        .newspaper {
-            max-width: 780px;
-            margin: 0 auto;
-            background: var(--ivory);
-            min-height: 100vh;
-            border-left: 1px solid var(--cream);
-            border-right: 1px solid var(--cream);
-            box-shadow: 0 0 60px rgba(44, 24, 16, 0.06);
-        }
-
-        /* ======= MASTHEAD ======= */
-        .masthead {
-            padding: 0 48px;
-            text-align: center;
-        }
-
-        .masthead-rule-top {
-            border-top: 1px solid var(--walnut);
-            padding-top: 3px;
-            border-bottom: 3px solid var(--walnut);
-            margin-top: 32px;
-        }
-
-        .masthead-dateline {
-            padding-top: 14px;
-            font-size: 10px;
-            color: var(--sepia);
-            letter-spacing: 2.5px;
-            text-transform: uppercase;
-            font-family: "Source Sans 3", -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
-        }
-
-        .masthead-title {
-            padding: 14px 0 8px;
-            font-size: clamp(40px, 6.5vw, 68px);
-            font-weight: 800;
-            color: var(--walnut);
-            letter-spacing: -1px;
-            line-height: 1.0;
-            /* Pin opsz to display-size axis for crisp rendering at large sizes. */
-            font-variation-settings: "opsz" 60, "wght" 800;
-        }
-
-        .masthead-tagline {
-            font-size: 12px;
-            color: var(--sepia);
-            font-style: italic;
-            letter-spacing: 0.5px;
-            padding-bottom: 14px;
-        }
-
-        .masthead-rule-bottom {
-            border-top: 3px solid var(--walnut);
-            padding-top: 3px;
-            border-bottom: 1px solid var(--walnut);
-        }
-
-        /* ======= NAV ======= */
-        .nav-bar {
-            padding: 14px 48px;
-            text-align: center;
-            border-bottom: 1px solid var(--cream);
-        }
-        .nav-bar a {
-            font-family: "Source Sans 3", -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
-            font-size: 11px;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            color: var(--brown);
-            text-decoration: none;
-            padding: 0 16px;
-            font-weight: 700;
-            transition: color 0.2s;
-        }
-        .nav-bar a:hover { color: var(--walnut); }
-
-        /* ======= RESEARCH QUOTE ======= */
-        .research-quote {
-            padding: 28px 48px 24px;
-            text-align: center;
-            border-bottom: 1px solid var(--cream);
-            background: var(--parchment);
-        }
-
-        .research-quote blockquote {
-            font-size: 17px;
-            font-style: italic;
-            color: var(--walnut-soft);
-            max-width: 560px;
-            margin: 0 auto 8px;
-            line-height: 1.65;
-        }
-
-        .research-quote cite {
-            font-size: 12px;
-            color: var(--sepia-light);
-            font-style: normal;
-            letter-spacing: 0.5px;
-        }
-
-        /* ======= HERO / WIZARD CONTAINER ======= */
-        .hero {
-            padding: 56px 48px 40px;
-            text-align: center;
-        }
-
-        .hero-kicker {
-            display: inline-block;
-            background: var(--brown);
-            color: var(--ivory);
-            font-size: 10px;
-            letter-spacing: 2.5px;
-            text-transform: uppercase;
-            font-weight: 700;
-            padding: 4px 14px;
-            border-radius: 2px;
-            margin-bottom: 24px;
-        }
-
-        .hero h2 {
-            font-size: clamp(24px, 3.5vw, 38px);
-            font-weight: 700;
-            color: var(--walnut);
-            line-height: 1.3;
-            max-width: 600px;
-            margin: 0 auto 20px;
-        }
-
-        .hero p {
-            font-size: 17px;
-            color: var(--sepia);
-            max-width: 520px;
-            margin: 0 auto 36px;
-            line-height: 1.75;
-        }
-
-        /* ======= ORNAMENTAL DIVIDER ======= */
-        .ornament {
-            display: flex;
-            align-items: center;
-            padding: 0 48px;
-            margin: 10px 0;
-        }
-        .ornament-line {
-            flex: 1;
-            height: 1px;
-            background: var(--gold);
-        }
-        .ornament-diamond {
-            padding: 0 14px;
-            font-size: 14px;
-            color: var(--gold);
-            line-height: 1;
-        }
-
-        /* ======= SECTION HEADINGS ======= */
-        .section-label {
-            text-align: center;
-            padding: 36px 48px 8px;
-        }
-        .section-label span {
-            display: inline-block;
-            font-size: 10px;
-            letter-spacing: 2.5px;
-            text-transform: uppercase;
-            font-weight: 700;
-            color: var(--brown);
-            border-top: 1px solid var(--gold);
-            border-bottom: 1px solid var(--gold);
-            padding: 8px 24px;
-        }
-
-        /* ======= WHAT YOU GET (3-column layout) ======= */
-        .columns {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 0;
-            padding: 24px 48px 40px;
-        }
-
-        .column {
-            padding: 20px 18px;
-            border-left: 1px solid var(--cream);
-            text-align: center;
-        }
-        .column:first-child { border-left: none; }
-
-        .column-icon {
-            font-size: 28px;
-            color: var(--gold);
-            margin-bottom: 12px;
-        }
-
-        .column h3 {
-            font-size: 16px;
-            font-weight: 700;
-            color: var(--walnut);
-            margin-bottom: 10px;
-            line-height: 1.3;
-        }
-
-        .column p {
-            font-size: 14px;
-            color: var(--sepia);
-            line-height: 1.65;
-        }
-
-        /* ======= SAMPLE BRIEF ======= */
-        .sample-brief {
-            margin: 0 48px 40px;
-            background: var(--parchment);
-            border-left: 3px solid var(--gold);
-            padding: 28px 28px 24px;
-        }
-
-        .sample-brief-label {
-            font-size: 10px;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            color: var(--brown);
-            font-weight: 700;
-            margin-bottom: 14px;
-        }
-
-        .sample-brief h3 {
-            font-size: 20px;
-            font-weight: 700;
-            color: var(--walnut);
-            line-height: 1.35;
-            margin-bottom: 14px;
-        }
-
-        .sample-brief-tag {
-            display: inline-block;
-            background: var(--brown);
-            color: var(--ivory);
-            font-size: 9px;
-            letter-spacing: 1.5px;
-            text-transform: uppercase;
-            font-weight: 700;
-            padding: 3px 8px;
-            border-radius: 2px;
-            margin-bottom: 10px;
-        }
-
-        .sample-brief p {
-            font-size: 15px;
-            color: var(--walnut-soft);
-            line-height: 1.7;
-            margin-bottom: 12px;
-        }
-
-        .sample-brief cite {
-            display: block;
-            font-size: 12px;
-            color: var(--sepia);
-            font-style: italic;
-            line-height: 1.5;
-            margin-top: 16px;
-            padding-top: 12px;
-            border-top: 1px dashed var(--gold);
-        }
-
-        /* ======= CATEGORIES GRID ======= */
-        .categories {
-            padding: 24px 48px 40px;
-        }
-
-        .cat-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 0;
-        }
-
-        .cat-item {
-            padding: 18px 20px;
-            border-bottom: 1px solid var(--cream);
-            border-right: 1px solid var(--cream);
-        }
-        .cat-item:nth-child(2n) { border-right: none; }
-
-        .cat-item h4 {
-            font-size: 15px;
-            font-weight: 700;
-            color: var(--walnut);
-            margin-bottom: 6px;
-        }
-
-        .cat-item p {
-            font-size: 12px;
-            color: var(--sepia);
-            line-height: 1.5;
-        }
-
-        /* ======= PRICING ======= */
-        .pricing {
-            padding: 24px 48px 48px;
-        }
-
-        .pricing-cards {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 24px;
-        }
-
-        .price-card {
-            border: 1px solid var(--cream);
-            padding: 32px 24px;
-            text-align: center;
-            position: relative;
-        }
-
-        .price-card.featured {
-            border: 2px solid var(--gold);
-            background: var(--parchment);
-        }
-
-        .price-card.featured::before {
-            content: "MOST POPULAR";
-            position: absolute;
-            top: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: var(--gold);
-            color: var(--walnut);
-            font-size: 9px;
-            letter-spacing: 1.5px;
-            font-weight: 700;
-            padding: 3px 12px;
-            border-radius: 2px;
-        }
-
-        .price-card h3 {
-            font-size: 18px;
-            font-weight: 700;
-            color: var(--walnut);
-            margin-bottom: 6px;
-        }
-
-        .price-card .price {
-            font-size: 36px;
-            font-weight: 700;
-            color: var(--brown);
-            margin: 16px 0 4px;
-        }
-        .price-card .price span {
-            font-size: 14px;
-            color: var(--sepia);
-            font-weight: 400;
-        }
-
-        .price-card .price-desc {
-            font-size: 13px;
-            color: var(--sepia);
-            font-style: italic;
-            margin-bottom: 20px;
-        }
-
-        .price-card ul {
-            list-style: none;
-            margin-bottom: 24px;
-        }
-        .price-card ul li {
-            font-size: 13px;
-            color: var(--walnut-soft);
-            padding: 6px 0;
-            border-bottom: 1px dotted var(--cream);
-        }
-        .price-card ul li:last-child { border-bottom: none; }
-
-        .price-card a.cta {
-            display: inline-block;
-            font-family: "Source Sans 3", -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
-            font-size: 12px;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            font-weight: 700;
-            padding: 12px 28px;
-            text-decoration: none;
-            border-radius: 2px;
-            transition: background 0.2s;
-        }
-
-        .price-card a.cta-primary {
-            background: var(--brown);
-            color: var(--ivory);
-            border-bottom: 3px solid #4A2618;
-        }
-        .price-card a.cta-primary:hover { background: var(--brown-hover); }
-
-        .price-card a.cta-secondary {
-            background: transparent;
-            color: var(--brown);
-            border: 1px solid var(--brown);
-        }
-        .price-card a.cta-secondary:hover { background: var(--parchment); }
-
-        /* ======= TESTIMONIAL / PULL QUOTE ======= */
-        .pull-quote {
-            padding: 40px 72px;
-            text-align: center;
-        }
-        .pull-quote blockquote {
-            font-size: 20px;
-            font-style: italic;
-            color: var(--walnut);
-            line-height: 1.6;
-            margin-bottom: 14px;
-        }
-        .pull-quote blockquote::before { content: "\201C"; }
-        .pull-quote blockquote::after { content: "\201D"; }
-        .pull-quote cite {
-            font-size: 12px;
-            color: var(--sepia);
-            font-style: normal;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-        }
-
-        /* ======= FOOTER ======= */
-        .footer-rule {
-            margin: 0 48px;
-            border-top: 3px double var(--walnut);
-        }
-
-        .footer {
-            background: var(--walnut);
-            padding: 28px 48px;
-            text-align: center;
-        }
-
-        .footer-links {
-            margin-bottom: 12px;
-        }
-        .footer-links a {
-            font-family: "Source Sans 3", -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
-            font-size: 11px;
-            letter-spacing: 1.5px;
-            text-transform: uppercase;
-            color: var(--gold);
-            text-decoration: none;
-            padding: 0 10px;
-        }
-        .footer-links a:hover { color: var(--parchment); }
-
-        .footer-copy {
-            font-size: 11px;
-            color: var(--khaki);
-            font-style: italic;
-        }
-
-        /* ======= WIZARD STYLES ======= */
-        .wizard-step {
-            display: none;
-        }
-        .wizard-step.active {
-            display: block;
-        }
-
-        .wizard-progress {
-            font-size: 11px;
-            color: var(--sepia-light);
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            margin-bottom: 20px;
-        }
-
-        .wizard-back {
-            display: inline-block;
-            font-size: 12px;
-            color: var(--brown);
-            text-decoration: none;
-            cursor: pointer;
-            margin-bottom: 20px;
-            transition: color 0.2s;
-            background: none;
-            border: none;
-            font-family: "Source Sans 3", -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
-        }
-        .wizard-back:hover {
-            color: var(--brown-hover);
-        }
-
-        /* Wizard email form */
-        .wizard-email-form {
-            display: flex;
-            gap: 10px;
-            justify-content: center;
-            flex-wrap: wrap;
-            max-width: 500px;
-            margin: 0 auto;
-        }
-
-        .wizard-email-form input[type="email"] {
-            font-family: "Source Sans 3", -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
-            font-size: 15px;
-            padding: 14px 20px;
-            border: 1px solid var(--cream);
-            background: var(--ivory);
-            color: var(--walnut-soft);
-            border-radius: 2px;
-            width: 300px;
-            outline: none;
-            transition: border-color 0.2s;
-        }
-        .wizard-email-form input[type="email"]:focus {
-            border-color: var(--gold);
-        }
-        .wizard-email-form input[type="email"]::placeholder {
-            color: var(--sepia-light);
-            font-style: italic;
-        }
-
-        .wizard-btn {
-            font-family: "Source Sans 3", -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
-            font-size: 12px;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            font-weight: 700;
-            padding: 14px 28px;
-            background: var(--brown);
-            color: var(--ivory);
-            border: none;
-            border-radius: 2px;
-            border-bottom: 3px solid #4A2618;
-            cursor: pointer;
-            transition: background 0.2s;
-        }
-        .wizard-btn:hover {
-            background: var(--brown-hover);
-        }
-        .wizard-btn:disabled {
-            opacity: 0.5;
-            cursor: not-allowed;
-        }
-
-        .wizard-btn-secondary {
-            background: transparent;
-            color: var(--brown);
-            border: 1px solid var(--brown);
-            border-bottom: 1px solid var(--brown);
-        }
-        .wizard-btn-secondary:hover {
-            background: var(--parchment);
-        }
-
-        .wizard-note {
-            margin-top: 14px;
-            font-size: 11px;
-            color: var(--sepia-light);
-            font-style: italic;
-        }
-
-        .wizard-error {
-            color: #b33;
-            font-size: 13px;
-            margin-top: 10px;
-            min-height: 18px;
-        }
-
-        /* Tier cards */
-        .tier-cards {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 24px;
-            max-width: 560px;
-            margin: 0 auto 20px;
-        }
-
-        .tier-card {
-            border: 1px solid var(--cream);
-            padding: 28px 20px;
-            text-align: center;
-            cursor: pointer;
-            transition: border-color 0.2s, background 0.2s;
-            position: relative;
-        }
-        .tier-card:hover {
-            background: var(--parchment);
-        }
-        .tier-card.featured {
-            border: 2px solid var(--gold);
-        }
-        .tier-card.featured::before {
-            content: "RECOMMENDED";
-            position: absolute;
-            top: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: var(--gold);
-            color: var(--walnut);
-            font-size: 9px;
-            letter-spacing: 1.5px;
-            font-weight: 700;
-            padding: 3px 12px;
-            border-radius: 2px;
-        }
-        .tier-card h3 {
-            font-size: 18px;
-            font-weight: 700;
-            color: var(--walnut);
-            margin-bottom: 4px;
-        }
-        .tier-card .tier-price {
-            font-size: 32px;
-            font-weight: 700;
-            color: var(--brown);
-            margin: 12px 0 4px;
-        }
-        .tier-card .tier-price span {
-            font-size: 14px;
-            color: var(--sepia);
-            font-weight: 400;
-        }
-        .tier-card .tier-desc {
-            font-size: 13px;
-            color: var(--sepia);
-            font-style: italic;
-            margin-bottom: 16px;
-        }
-        .tier-card ul {
-            list-style: none;
-            margin-bottom: 20px;
-            text-align: left;
-        }
-        .tier-card ul li {
-            font-size: 13px;
-            color: var(--walnut-soft);
-            padding: 5px 0;
-            border-bottom: 1px dotted var(--cream);
-        }
-        .tier-card ul li:last-child {
-            border-bottom: none;
-        }
-
-        /* Topic grid */
-        .wizard-topic-group {
-            margin-bottom: 24px;
-        }
-        .wizard-topic-group h3 {
-            font-size: 12px;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            color: var(--brown);
-            font-weight: 700;
-            padding: 8px 0;
-            border-top: 1px solid var(--gold);
-            border-bottom: 1px solid var(--gold);
-            text-align: center;
-            margin-bottom: 0;
-        }
-        .wizard-topic-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 0;
-        }
-        .wizard-topic-item {
-            padding: 12px 16px;
-            border: 1px solid var(--cream);
-            cursor: pointer;
-            transition: background 0.15s, border-color 0.15s;
-            position: relative;
-        }
-        .wizard-topic-item:hover {
-            background: var(--parchment);
-        }
-        .wizard-topic-item.selected {
-            background: var(--parchment);
-            border-color: var(--gold);
-            border-width: 2px;
-        }
-        .wizard-topic-item.disabled {
-            opacity: 0.4;
-            cursor: not-allowed;
-        }
-        .wizard-topic-item.disabled:hover {
-            background: transparent;
-        }
-        .wizard-topic-item h4 {
-            font-size: 14px;
-            font-weight: 700;
-            color: var(--walnut);
-            margin-bottom: 2px;
-        }
-        .wizard-topic-item .wt-day-label {
-            font-size: 11px;
-            color: var(--gold);
-            font-weight: 700;
-        }
-        .wizard-topic-item .wt-day-selector {
-            margin-top: 8px;
-            display: none;
-        }
-        .wizard-topic-item.selected .wt-day-selector {
-            display: block;
-        }
-        .wizard-topic-item .wt-day-selector select {
-            font-family: "Source Sans 3", -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
-            font-size: 12px;
-            padding: 4px 8px;
-            border: 1px solid var(--cream);
-            background: var(--ivory);
-            color: var(--walnut-soft);
-            border-radius: 2px;
-        }
-
-        .wizard-count-bar {
-            text-align: center;
-            font-size: 13px;
-            color: var(--sepia);
-            margin-bottom: 20px;
-            padding: 10px;
-            background: var(--parchment);
-            border-radius: 2px;
-        }
-        .wizard-count-bar strong {
-            color: var(--walnut);
-        }
-
-        /* Checkout summary */
-        .checkout-summary {
-            max-width: 440px;
-            margin: 0 auto 24px;
-            text-align: left;
-        }
-        .checkout-summary-row {
-            display: flex;
-            justify-content: space-between;
-            padding: 8px 0;
-            border-bottom: 1px dotted var(--cream);
-            font-size: 14px;
-        }
-        .checkout-summary-row .cs-day {
-            color: var(--sepia);
-            font-weight: 700;
-            min-width: 100px;
-        }
-        .checkout-summary-row .cs-topic {
-            color: var(--walnut);
-        }
-
-        .promo-field {
-            max-width: 440px;
-            margin: 0 auto 24px;
-        }
-        .promo-field label {
-            display: block;
-            font-size: 12px;
-            color: var(--sepia);
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            font-weight: 700;
-            margin-bottom: 6px;
-        }
-        .promo-field input[type="text"] {
-            font-family: "Source Sans 3", -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
-            font-size: 15px;
-            padding: 12px 16px;
-            border: 1px solid var(--cream);
-            background: var(--ivory);
-            color: var(--walnut-soft);
-            border-radius: 2px;
-            width: 100%;
-            outline: none;
-            transition: border-color 0.2s;
-        }
-        .promo-field input[type="text"]:focus {
-            border-color: var(--gold);
-        }
-        .promo-field input[type="text"]::placeholder {
-            color: var(--sepia-light);
-            font-style: italic;
-        }
-
-        /* Confirmation */
-        .confirm-check {
-            font-size: 48px;
-            color: var(--gold);
-            margin-bottom: 16px;
-        }
-        .confirm-topic {
-            font-size: 15px;
-            color: var(--sepia);
-            margin-bottom: 24px;
-            line-height: 1.65;
-        }
-        .confirm-link {
-            display: inline-block;
-            font-size: 13px;
-            color: var(--brown);
-            text-decoration: underline;
-            margin: 6px 8px;
-            transition: color 0.2s;
-        }
-        .confirm-link:hover {
-            color: var(--brown-hover);
-        }
-
-        /* Bottom CTA simplified */
-        .bottom-cta {
-            padding: 36px 48px 48px;
-            text-align: center;
-        }
-        .bottom-cta h2 {
-            font-size: clamp(24px, 3.5vw, 38px);
-            font-weight: 700;
-            color: var(--walnut);
-            line-height: 1.3;
-            max-width: 600px;
-            margin: 0 auto 16px;
-        }
-        .bottom-cta p {
-            font-size: 17px;
-            color: var(--sepia);
-            max-width: 520px;
-            margin: 0 auto 24px;
-            line-height: 1.75;
-        }
-
-        /* ======= RESPONSIVE ======= */
-        @media (max-width: 680px) {
-            .newspaper { border: none; }
-            .masthead, .hero, .columns, .categories, .pricing,
-            .sample-brief, .pull-quote, .section-label, .ornament,
-            .nav-bar, .footer, .bottom-cta {
-                padding-left: 20px;
-                padding-right: 20px;
-            }
-            .sample-brief { margin-left: 20px; margin-right: 20px; }
-            .footer-rule { margin: 0 20px; }
-            .columns { grid-template-columns: 1fr; }
-            .column { border-left: none; border-bottom: 1px solid var(--cream); }
-            .column:last-child { border-bottom: none; }
-            .cat-grid { grid-template-columns: 1fr; }
-            .cat-item { border-right: none; }
-            .pricing-cards { grid-template-columns: 1fr; }
-            .pull-quote { padding: 32px 20px; }
-            .wizard-email-form input[type="email"] { width: 100%; }
-            .nav-bar a { padding: 0 8px; font-size: 10px; }
-            .tier-cards { grid-template-columns: 1fr; gap: 16px; }
-        }
-        @media (max-width: 600px) {
-            .wizard-topic-grid { grid-template-columns: 1fr; }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Therapist Brief — Clinical Research Briefs for Practicing Therapists</title>
+  <meta name="description" content="A weekly research brief for licensed mental health professionals. Peer-reviewed clinical research distilled into 5-minute reads.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700&family=Playfair+Display:ital,wght@0,500;0,700;0,800;0,900;1,500;1,700&family=Source+Serif+4:ital,wght@0,300;0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --teal:      #344774;
+      --teal-dark: #344774;
+      --teal-mid:  #344774;
+      --teal-light:#e0e5f0;
+      --cream:     #faf8f5;
+      --ink:       #111111;
+      --ink-mid:   #333333;
+      --ink-light: #666666;
+      --rule:      #d0d0c8;
+      --accent:    #c17f3a;
+      --white:     #ffffff;
+      --col-max:   1200px;
+      --col-content: 860px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Source Serif 4', Georgia, serif;
+      background: var(--cream);
+      color: var(--ink);
+      font-size: 16px;
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    a { color: inherit; }
+
+    /* ─── MASTHEAD TOP ─── */
+    .masthead-top {
+      background: var(--teal);
+      color: var(--white);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 11.5px;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 8px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .masthead-top a { color: rgba(255,255,255,0.7); text-decoration: none; }
+    .masthead-top a:hover { color: white; }
+
+    /* ─── MASTHEAD MAIN ─── */
+    .masthead-main {
+      background: var(--cream);
+      border-bottom: 3px solid var(--ink);
+      padding: 0 40px;
+    }
+    .masthead-inner {
+      max-width: var(--col-max);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      align-items: center;
+      padding: 18px 0 14px;
+      gap: 20px;
+    }
+    .masthead-nav { display: flex; gap: 28px; align-items: center; }
+    .masthead-nav a {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--ink-mid);
+      text-decoration: none;
+    }
+    .masthead-nav a:hover { color: var(--teal); }
+
+    .masthead-logo { text-align: center; }
+    .masthead-logo .wordmark {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 36px;
+      font-weight: 900;
+      color: var(--ink);
+      letter-spacing: -0.01em;
+      line-height: 1;
+      display: block;
+    }
+    .masthead-logo .tagline {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 10.5px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--ink-light);
+      margin-top: 5px;
+    }
+
+    .masthead-actions { display: flex; gap: 12px; align-items: center; justify-content: flex-end; }
+    .btn-subscribe {
+      background: var(--teal);
+      color: white;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: 9px 20px;
+      border: none;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+    .btn-subscribe:hover { background: #283963; }
+    .btn-login {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--ink-mid);
+      text-decoration: none;
+      letter-spacing: 0.04em;
+    }
+
+    /* ─── NAV STRIP ─── */
+    .nav-strip {
+      background: var(--white);
+      border-bottom: 1px solid var(--rule);
+      padding: 0 40px;
+    }
+    .nav-strip-inner {
+      max-width: var(--col-max);
+      margin: 0 auto;
+      display: flex;
+      gap: 32px;
+      padding: 11px 0;
+      overflow-x: auto;
+    }
+    .nav-strip a {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      color: var(--ink-mid);
+      text-decoration: none;
+      white-space: nowrap;
+      padding-bottom: 2px;
+      border-bottom: 2px solid transparent;
+    }
+    .nav-strip a:hover, .nav-strip a.active {
+      color: var(--teal);
+      border-bottom-color: var(--teal);
+    }
+
+    /* ─── HERO ─── */
+    .hero {
+      background: var(--cream);
+      color: var(--ink);
+      padding: 80px 40px 90px;
+    }
+    .hero-inner {
+      max-width: var(--col-max);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 380px;
+      gap: 60px;
+      align-items: start;
+    }
+    .hero-kicker {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--ink-light);
+      margin-bottom: 20px;
+    }
+    .hero-headline {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: clamp(38px, 5vw, 62px);
+      font-weight: 700;
+      line-height: 1.1;
+      color: var(--ink);
+      letter-spacing: -0.02em;
+      margin-bottom: 24px;
+    }
+    .hero-headline em { font-style: italic; color: var(--teal-dark); }
+    .hero-deck {
+      font-family: 'Source Serif 4', Georgia, serif;
+      font-size: 19px;
+      font-weight: 300;
+      line-height: 1.6;
+      color: var(--ink-mid);
+      max-width: 580px;
+      margin-bottom: 36px;
+    }
+    .hero-cta-group { display: flex; gap: 16px; align-items: center; flex-wrap: wrap; }
+    .btn-hero-primary {
+      background: var(--accent);
+      color: white;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      padding: 14px 32px;
+      border: none;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+    .btn-hero-primary:hover { background: #a86b2e; }
+    .btn-hero-ghost {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--ink-mid);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 0;
+    }
+    .btn-hero-ghost:hover { color: var(--ink); }
+
+    .hero-sidebar { border-left: 1px solid var(--rule); padding-left: 40px; }
+    .sidebar-label {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--ink-light);
+      margin-bottom: 20px;
+    }
+    .issue-preview { display: flex; flex-direction: column; gap: 20px; }
+    .issue-item { border-top: 1px solid var(--rule); padding-top: 18px; }
+    .issue-item:first-child { border-top: none; padding-top: 0; }
+    .issue-number {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 10px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--ink-light);
+      margin-bottom: 6px;
+    }
+    .issue-title {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 17px;
+      font-weight: 600;
+      line-height: 1.3;
+      color: var(--ink);
+    }
+    .issue-subtitle {
+      font-family: 'Source Serif 4', Georgia, serif;
+      font-size: 13px;
+      font-weight: 300;
+      color: var(--ink-light);
+      margin-top: 4px;
+      font-style: italic;
+    }
+
+    /* ─── ABOUT STRIP ─── */
+    .about-strip {
+      background: var(--teal-dark);
+      padding: 50px 40px;
+    }
+    .about-strip-inner {
+      max-width: var(--col-max);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0;
+    }
+    .about-pillar {
+      padding: 0 40px;
+      border-right: 1px solid rgba(255,255,255,0.12);
+    }
+    .about-pillar:first-child { padding-left: 0; }
+    .about-pillar:last-child { border-right: none; }
+    .pillar-num {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 42px;
+      font-weight: 900;
+      color: white;
+      line-height: 1;
+      margin-bottom: 10px;
+    }
+    .pillar-label {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.5);
+      margin-bottom: 10px;
+    }
+    .pillar-desc {
+      font-family: 'Source Serif 4', Georgia, serif;
+      font-size: 15px;
+      font-weight: 300;
+      color: rgba(255,255,255,0.7);
+      line-height: 1.6;
+    }
+
+    /* ─── WHAT'S INSIDE ─── */
+    .what-section { padding: 80px 40px; background: var(--cream); }
+    .what-inner { max-width: var(--col-max); margin: 0 auto; }
+    .section-header {
+      display: flex;
+      align-items: baseline;
+      gap: 20px;
+      margin-bottom: 40px;
+      border-bottom: 2px solid var(--ink);
+      padding-bottom: 14px;
+    }
+    .section-title {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 26px;
+      font-weight: 700;
+      color: var(--ink);
+    }
+    .section-meta {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--ink-light);
+    }
+
+    .what-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0; }
+    .what-item {
+      padding: 32px 0;
+      border-bottom: 1px solid var(--rule);
+      display: grid;
+      grid-template-columns: 60px 1fr;
+      gap: 20px;
+      align-items: start;
+    }
+    .what-item:nth-child(odd) { padding-right: 48px; border-right: 1px solid var(--rule); }
+    .what-item:nth-child(even) { padding-left: 48px; }
+    .what-item:nth-last-child(-n+2) { border-bottom: none; }
+    .what-icon {
+      width: 44px;
+      height: 44px;
+      background: var(--teal-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .what-icon svg { width: 22px; height: 22px; stroke: var(--teal); fill: none; stroke-width: 1.5; }
+    .what-item-title {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--ink);
+      margin-bottom: 8px;
+      line-height: 1.25;
+    }
+    .what-item-desc {
+      font-family: 'Source Serif 4', Georgia, serif;
+      font-size: 15px;
+      font-weight: 300;
+      color: var(--ink-mid);
+      line-height: 1.65;
+    }
+
+    /* ─── SAMPLE ISSUE ─── */
+    .sample-section { background: var(--cream); padding: 80px 40px; }
+    .sample-inner { max-width: var(--col-max); margin: 0 auto; }
+
+    .sample-brief {
+      background: var(--white);
+      color: var(--ink);
+      padding: 48px 52px;
+      max-width: 780px;
+      position: relative;
+      border: 1px solid var(--rule);
+    }
+    .sample-brief::before {
+      content: 'SAMPLE ISSUE';
+      position: absolute;
+      top: -11px;
+      left: 0;
+      background: var(--accent);
+      color: white;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      padding: 4px 10px;
+    }
+    .brief-header {
+      border-bottom: 3px solid var(--ink);
+      padding-bottom: 16px;
+      margin-bottom: 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+    }
+    .brief-title {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 13px;
+      font-weight: 900;
+      letter-spacing: 0.04em;
+      color: var(--teal-dark);
+    }
+    .brief-issue {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 11px;
+      color: var(--ink-light);
+      letter-spacing: 0.06em;
+    }
+    .brief-headline {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 28px;
+      font-weight: 700;
+      line-height: 1.2;
+      margin-bottom: 10px;
+      color: var(--ink);
+    }
+    .brief-byline {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 11px;
+      color: var(--ink-light);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+    .brief-rule { height: 1px; background: var(--rule); margin: 20px 0; }
+    .brief-body {
+      font-family: 'Source Serif 4', Georgia, serif;
+      font-size: 15.5px;
+      line-height: 1.75;
+      color: var(--ink-mid);
+    }
+    .brief-body p { margin-bottom: 14px; }
+    .brief-body strong { color: var(--ink); font-weight: 600; }
+    .brief-category {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 12px;
+    }
+    .brief-tag {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 10.5px;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--teal);
+      margin: 22px 0 8px;
+      padding-bottom: 4px;
+      border-bottom: 1px solid var(--rule);
+    }
+    .brief-tag:first-child { margin-top: 0; }
+    .brief-citation {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 11px;
+      color: var(--ink-light);
+      font-style: italic;
+      border-left: 3px solid var(--teal);
+      padding-left: 14px;
+      margin-top: 24px;
+    }
+    .brief-footer {
+      border-top: 1px solid var(--rule);
+      padding-top: 16px;
+      margin-top: 28px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .brief-footer-label {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 11px;
+      color: var(--ink-light);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+    .brief-read-more {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--teal);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    /* ─── PRICING ─── */
+    .pricing-section {
+      background: var(--white);
+      padding: 80px 40px;
+      border-top: 1px solid var(--rule);
+    }
+    .pricing-inner { max-width: var(--col-max); margin: 0 auto; }
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+      margin-top: 40px;
+      border: 1px solid var(--rule);
+    }
+    .plan {
+      padding: 40px 40px 36px;
+      background: var(--white);
+      display: flex;
+      flex-direction: column;
+    }
+    .plan + .plan { border-left: 1px solid var(--rule); }
+    .plan.plan-featured { background: var(--teal-light); position: relative; }
+    .plan.plan-featured::before {
+      content: 'Most Popular';
+      position: absolute;
+      top: -1px; right: -1px;
+      background: var(--accent);
+      color: white;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      padding: 6px 14px;
+    }
+    .plan-name {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--ink-light);
+      margin-bottom: 16px;
+    }
+    .plan-price {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 48px;
+      font-weight: 900;
+      color: var(--ink);
+      line-height: 1;
+      margin-bottom: 6px;
+      letter-spacing: -0.01em;
+    }
+    .plan-price span {
+      font-family: 'Source Serif 4', Georgia, serif;
+      font-size: 16px;
+      font-weight: 300;
+      color: var(--ink-light);
+      letter-spacing: 0;
+    }
+    .plan-tagline {
+      font-family: 'Source Serif 4', Georgia, serif;
+      font-size: 14px;
+      font-weight: 300;
+      color: var(--ink-mid);
+      font-style: italic;
+      margin-bottom: 24px;
+    }
+    .plan ul { list-style: none; padding: 0; margin: 0 0 28px; flex: 1; }
+    .plan ul li {
+      font-family: 'Source Serif 4', Georgia, serif;
+      font-size: 15px;
+      font-weight: 400;
+      color: var(--ink-mid);
+      padding: 7px 0;
+      border-bottom: 1px solid rgba(0,0,0,0.05);
+    }
+    .plan ul li::before {
+      content: '·';
+      color: var(--teal);
+      margin-right: 8px;
+      font-weight: 700;
+    }
+    .plan-cta {
+      display: inline-block;
+      text-align: center;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 13px 24px;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .plan-cta-secondary {
+      background: transparent;
+      color: var(--teal);
+      border: 1px solid var(--teal);
+    }
+    .plan-cta-secondary:hover { background: var(--teal); color: white; }
+    .plan-cta-primary {
+      background: var(--accent);
+      color: white;
+    }
+    .plan-cta-primary:hover { background: #a86b2e; }
+
+    /* ─── SUBSCRIBE CTA ─── */
+    .subscribe-section {
+      background: var(--teal-dark);
+      padding: 80px 40px;
+      color: var(--white);
+      text-align: center;
+    }
+    .subscribe-kicker {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.55);
+      margin-bottom: 18px;
+    }
+    .subscribe-headline {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: clamp(32px, 4vw, 52px);
+      font-weight: 700;
+      line-height: 1.15;
+      margin-bottom: 16px;
+      color: white;
+    }
+    .subscribe-sub {
+      font-family: 'Source Serif 4', Georgia, serif;
+      font-size: 18px;
+      font-weight: 300;
+      color: rgba(255,255,255,0.75);
+      max-width: 520px;
+      margin: 0 auto 40px;
+      line-height: 1.6;
+    }
+    .subscribe-form {
+      display: flex;
+      gap: 0;
+      max-width: 460px;
+      margin: 0 auto 16px;
+    }
+    .subscribe-form input {
+      flex: 1;
+      padding: 14px 18px;
+      font-family: 'Source Serif 4', Georgia, serif;
+      font-size: 15px;
+      border: none;
+      background: rgba(255,255,255,0.95);
+      color: var(--ink);
+      outline: none;
+    }
+    .subscribe-form input::placeholder { color: var(--ink-light); }
+    .subscribe-form button {
+      background: var(--accent);
+      color: white;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 14px 24px;
+      border: none;
+      cursor: pointer;
+      transition: background 0.2s;
+      white-space: nowrap;
+    }
+    .subscribe-form button:hover { background: #a86b2e; }
+    .subscribe-form button:disabled { opacity: 0.5; cursor: not-allowed; }
+    .subscribe-note {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 11.5px;
+      color: rgba(255,255,255,0.45);
+      letter-spacing: 0.03em;
+    }
+    .subscribe-msg {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 12.5px;
+      margin-top: 12px;
+      color: rgba(255,255,255,0.85);
+      min-height: 18px;
+    }
+    .subscribe-msg.error { color: #ffb4a8; }
+
+    /* ─── FOOTER ─── */
+    footer {
+      background: var(--ink);
+      color: rgba(255,255,255,0.6);
+      padding: 50px 40px 30px;
+    }
+    .footer-inner { max-width: var(--col-max); margin: 0 auto; }
+    .footer-top {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+      gap: 40px;
+      padding-bottom: 40px;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+    .footer-brand .wordmark {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 22px;
+      font-weight: 900;
+      color: var(--white);
+      margin-bottom: 12px;
+      display: block;
+    }
+    .footer-brand p {
+      font-family: 'Source Serif 4', Georgia, serif;
+      font-size: 13px;
+      line-height: 1.65;
+      font-weight: 300;
+    }
+    .footer-col-title {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 10.5px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--white);
+      margin-bottom: 16px;
+    }
+    .footer-links { display: flex; flex-direction: column; gap: 10px; }
+    .footer-links a {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 13px;
+      color: rgba(255,255,255,0.55);
+      text-decoration: none;
+      transition: color 0.15s;
+    }
+    .footer-links a:hover { color: white; }
+    .footer-bottom {
+      padding-top: 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .footer-legal {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 11px;
+      color: rgba(255,255,255,0.35);
+    }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 900px) {
+      .masthead-inner { grid-template-columns: 1fr; text-align: center; gap: 12px; }
+      .masthead-nav, .masthead-actions { justify-content: center; }
+      .hero-inner { grid-template-columns: 1fr; }
+      .hero-sidebar { border-left: none; border-top: 1px solid var(--rule); padding-left: 0; padding-top: 32px; }
+      .about-strip-inner, .pricing-grid { grid-template-columns: 1fr; }
+      .about-pillar { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.12); padding: 28px 0; }
+      .about-pillar:last-child { border-bottom: none; }
+      .what-grid { grid-template-columns: 1fr; }
+      .what-item:nth-child(odd) { border-right: none; padding-right: 0; }
+      .what-item:nth-child(even) { padding-left: 0; }
+      .footer-top { grid-template-columns: 1fr 1fr; }
+      .plan + .plan { border-left: none; border-top: 1px solid var(--rule); }
+    }
+    @media (max-width: 600px) {
+      .masthead-top { flex-direction: column; gap: 4px; padding: 8px 20px; }
+      .hero { padding: 48px 24px 56px; }
+      .what-section, .sample-section, .pricing-section, .subscribe-section { padding: 56px 24px; }
+      .about-strip { padding: 32px 24px; }
+      .sample-brief { padding: 32px 28px; }
+      .footer-top { grid-template-columns: 1fr; gap: 28px; }
+      .footer-bottom { flex-direction: column; gap: 8px; align-items: flex-start; }
+      .subscribe-form { flex-direction: column; }
+    }
+  </style>
 </head>
 <body>
 
-<div class="newspaper">
+<!-- MASTHEAD TOP -->
+<div class="masthead-top">
+  <span>Weekly &middot; Every Monday</span>
+  <span>For licensed mental health professionals</span>
+  <a href="#sample">Sample Issue</a>
+</div>
 
-    <!-- ========== MASTHEAD ========== -->
-    <header class="masthead">
-        <div class="masthead-rule-top"></div>
-        <div class="masthead-dateline">Est. 2026 &bull; For Licensed Mental Health Professionals</div>
-        <h1 class="masthead-title">The Therapist Brief</h1>
-        <div class="masthead-tagline">Evidence-Based Research for the Practicing Clinician</div>
-        <div class="masthead-rule-bottom"></div>
-    </header>
-
-    <!-- ========== NAV ========== -->
-    <nav class="nav-bar">
-        <a href="#about">About</a>
-        <a href="#sample">Sample</a>
-        <a href="#categories">Topics</a>
-        <a href="#pricing">Pricing</a>
-        <a href="#subscribe">Subscribe</a>
+<!-- MASTHEAD MAIN -->
+<div class="masthead-main">
+  <div class="masthead-inner">
+    <nav class="masthead-nav">
+      <a href="#about">About</a>
+      <a href="#sample">Sample</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#subscribe">Subscribe</a>
     </nav>
+    <div class="masthead-logo">
+      <span class="wordmark">The Therapist Brief</span>
+      <div class="tagline">Research briefs for practicing therapists</div>
+    </div>
+    <div class="masthead-actions">
+      <a class="btn-login" href="preferences.html">Log in</a>
+      <a class="btn-subscribe" href="#subscribe">Subscribe</a>
+    </div>
+  </div>
+</div>
 
-    <!-- ========== RESEARCH QUOTE ========== -->
-    <div class="research-quote">
-        <blockquote>&ldquo;Research shows therapist outcomes don&rsquo;t improve with experience alone. Intentional, ongoing learning does.&rdquo;</blockquote>
-        <cite>(Goldberg et al., 2016)</cite>
+<!-- NAV STRIP -->
+<div class="nav-strip">
+  <div class="nav-strip-inner">
+    <a href="#" class="active">All Topics</a>
+    <a href="#topics-therapeutic">Therapeutic Approaches</a>
+    <a href="#topics-dsm">DSM-5 Disorders</a>
+    <a href="#topics-wellness">Counselor Wellness</a>
+    <a href="#topics-populations">Specialized Populations</a>
+    <a href="#topics-supervision">Clinical Supervision</a>
+  </div>
+</div>
+
+<!-- HERO -->
+<section class="hero" id="about">
+  <div class="hero-inner">
+    <div>
+      <div class="hero-kicker">The Therapist Brief &mdash; Established 2026</div>
+      <h1 class="hero-headline">Clinical research,<br><em>distilled for your practice.</em></h1>
+      <p class="hero-deck">A concise weekly brief translating peer-reviewed clinical research into practical insights &mdash; written for licensed therapists who are too busy for 40-page journals.</p>
+      <div class="hero-cta-group">
+        <a href="#subscribe" class="btn-hero-primary">Get the Brief Free</a>
+        <a href="#sample" class="btn-hero-ghost">View a sample issue &darr;</a>
+      </div>
     </div>
 
-    <!-- ========== HERO / SIGNUP WIZARD ========== -->
-    <section class="hero" id="about">
-        <div class="hero-kicker">Now Accepting Subscribers</div>
-        <h2>Research you can use,<br>in the time you actually have.</h2>
-        <p>One brief per day. One study. Key findings, clinical implications, and limitations &mdash; all in 3 minutes or less. Built for therapists, by therapists.</p>
-
-        <div id="subscribe">
-            <!-- STEP 1: Email -->
-            <div id="step-email" class="wizard-step active">
-                <div class="wizard-progress">Step 1 of 3</div>
-                <form class="wizard-email-form" id="email-form">
-                    <input type="email" id="wizard-email" placeholder="your@email.com" required>
-                    <button type="submit" class="wizard-btn" id="email-btn">Get Started</button>
-                </form>
-                <div class="wizard-note">Free tier: 1 brief per week. Upgrade anytime.</div>
-                <div class="wizard-error" id="email-error"></div>
-            </div>
-
-            <!-- STEP 2: Choose Tier -->
-            <div id="step-tier" class="wizard-step">
-                <div class="wizard-progress">Step 2 of 3</div>
-                <button class="wizard-back" id="back-to-email">&larr; Back</button>
-                <h3 style="font-size:20px;color:var(--walnut);margin-bottom:24px;">Choose Your Plan</h3>
-                <div class="tier-cards">
-                    <div class="tier-card" id="tier-free-card">
-                        <h3>Free</h3>
-                        <div class="tier-price">$0<span>/mo</span></div>
-                        <div class="tier-desc">Start here</div>
-                        <ul>
-                            <li>1 brief per week (Mondays)</li>
-                            <li>Choose your Monday topic</li>
-                            <li>Full citation included</li>
-                        </ul>
-                        <button class="wizard-btn wizard-btn-secondary" id="select-free">Select Free</button>
-                    </div>
-                    <div class="tier-card featured" id="tier-paid-card">
-                        <h3>Professional</h3>
-                        <div class="tier-price">$9<span>/mo</span></div>
-                        <div class="tier-desc">Daily research briefs</div>
-                        <ul>
-                            <li>7 briefs per week (daily)</li>
-                            <li>Choose a topic for each day</li>
-                            <li>Full citation included</li>
-                            <li>Access to full archive</li>
-                        </ul>
-                        <button class="wizard-btn" id="select-paid">Select Professional</button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- STEP 3: Topics -->
-            <div id="step-topics" class="wizard-step">
-                <div class="wizard-progress" id="topics-progress">Step 3 of 3</div>
-                <button class="wizard-back" id="back-to-tier">&larr; Back</button>
-                <h3 id="topics-heading" style="font-size:20px;color:var(--walnut);margin-bottom:16px;"></h3>
-                <div class="wizard-count-bar" id="topics-count-bar">
-                    <strong id="topics-count">0</strong> of <strong id="topics-max">1</strong> topics selected
-                </div>
-                <div id="topics-container"></div>
-                <div style="text-align:center;margin-top:24px;">
-                    <button class="wizard-btn" id="topics-continue-btn" disabled>Continue</button>
-                </div>
-                <div class="wizard-error" id="topics-error" style="text-align:center;"></div>
-            </div>
-
-            <!-- STEP 4: Checkout (paid only) -->
-            <div id="step-checkout" class="wizard-step">
-                <div class="wizard-progress">Step 4 of 4</div>
-                <button class="wizard-back" id="back-to-topics">&larr; Back</button>
-                <h3 style="font-size:20px;color:var(--walnut);margin-bottom:20px;">Review &amp; Subscribe</h3>
-                <div class="checkout-summary" id="checkout-summary"></div>
-                <div class="promo-field">
-                    <label for="promo-input">Promo Code (optional)</label>
-                    <input type="text" id="promo-input" placeholder="Enter promo code">
-                </div>
-                <div style="text-align:center;">
-                    <button class="wizard-btn" id="checkout-btn">Subscribe &mdash; $9/month</button>
-                </div>
-                <div class="wizard-error" id="checkout-error" style="text-align:center;"></div>
-            </div>
-
-            <!-- STEP 5: Confirmation (free path) -->
-            <div id="step-confirm" class="wizard-step">
-                <div class="confirm-check">&#10003;</div>
-                <h3 style="font-size:24px;color:var(--walnut);margin-bottom:12px;">You're subscribed!</h3>
-                <p class="confirm-topic" id="confirm-message"></p>
-                <div>
-                    <a class="confirm-link" id="confirm-upgrade" href="#">Want daily briefs? Upgrade to Professional</a>
-                </div>
-                <div>
-                    <a class="confirm-link" id="confirm-manage" href="preferences.html">Manage your preferences</a>
-                </div>
-            </div>
+    <div class="hero-sidebar">
+      <div class="sidebar-label">Recent Briefs</div>
+      <div class="issue-preview">
+        <div class="issue-item">
+          <div class="issue-number">Vol. I &middot; No. 18</div>
+          <div class="issue-title">Repeated MI Protocol Fails to Reduce Opioid Overdose in Fentanyl-Dominant Market</div>
+          <div class="issue-subtitle">Phase III RCT, n=268</div>
         </div>
-    </section>
-
-    <!-- ========== DIVIDER ========== -->
-    <div class="ornament">
-        <div class="ornament-line"></div>
-        <div class="ornament-diamond">&diams;</div>
-        <div class="ornament-line"></div>
-    </div>
-
-    <!-- ========== WHAT YOU GET ========== -->
-    <div class="section-label">
-        <span>What You Receive</span>
-    </div>
-
-    <div class="columns">
-        <div class="column">
-            <div class="column-icon">&para;</div>
-            <h3>Key Finding</h3>
-            <p>The primary takeaway in 1&ndash;2 sentences, written in plain clinical language with appropriate hedging.</p>
+        <div class="issue-item">
+          <div class="issue-number">Vol. I &middot; No. 17</div>
+          <div class="issue-title">Six-Week Internet-Based ACT Cuts Burnout and Distress in Healthcare Workers</div>
+          <div class="issue-subtitle">Journal of Medical Internet Research, 2024</div>
         </div>
-        <div class="column">
-            <div class="column-icon">&sect;</div>
-            <h3>Why It Matters</h3>
-            <p>Direct clinical application for your practice. What to consider, what to try, and what to watch for.</p>
+        <div class="issue-item">
+          <div class="issue-number">Vol. I &middot; No. 16</div>
+          <div class="issue-title">Negative Cognitions Link to Adolescent Anxiety at r=0.41 (k=42, N=27,845)</div>
+          <div class="issue-subtitle">Meta-analysis, clinical samples</div>
         </div>
-        <div class="column">
-            <div class="column-icon">&Dagger;</div>
-            <h3>Study Details &amp; Limits</h3>
-            <p>Sample size, study type, and specific limitations. No vague language &mdash; real methodological context.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT STRIP -->
+<div class="about-strip">
+  <div class="about-strip-inner">
+    <div class="about-pillar">
+      <div class="pillar-num">5 min</div>
+      <div class="pillar-label">Reading time</div>
+      <p class="pillar-desc">Dense research condensed into a brief you can read between sessions.</p>
+    </div>
+    <div class="about-pillar">
+      <div class="pillar-num">7&times;</div>
+      <div class="pillar-label">Per week</div>
+      <p class="pillar-desc">A new brief each morning, 7 a.m. ET. One a week for the free tier.</p>
+    </div>
+    <div class="about-pillar">
+      <div class="pillar-num">100%</div>
+      <div class="pillar-label">Peer-reviewed</div>
+      <p class="pillar-desc">Every finding cited from published, peer-reviewed clinical research.</p>
+    </div>
+  </div>
+</div>
+
+<!-- WHAT'S INSIDE -->
+<section class="what-section">
+  <div class="what-inner">
+    <div class="section-header">
+      <h2 class="section-title">What&rsquo;s Inside Each Brief</h2>
+      <span class="section-meta">Every issue &middot; Every morning</span>
+    </div>
+    <div class="what-grid">
+      <div class="what-item">
+        <div class="what-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 2a9 9 0 100 18A9 9 0 0012 2zm0 4v5l3 3"/><circle cx="12" cy="12" r="1"/></svg>
         </div>
+        <div>
+          <div class="what-item-title">The Research Summary</div>
+          <p class="what-item-desc">One carefully selected study explained clearly &mdash; what they studied, what they found, and what it means for your practice.</p>
+        </div>
+      </div>
+      <div class="what-item">
+        <div class="what-icon">
+          <svg viewBox="0 0 24 24"><path d="M9 12l2 2 4-4"/><path d="M3 12c0-4.97 4.03-9 9-9s9 4.03 9 9-4.03 9-9 9-9-4.03-9-9z"/></svg>
+        </div>
+        <div>
+          <div class="what-item-title">Clinical Takeaways</div>
+          <p class="what-item-desc">Concrete, actionable takeaways written for practicing clinicians &mdash; not academics. Two or three things you can use tomorrow.</p>
+        </div>
+      </div>
+      <div class="what-item">
+        <div class="what-icon">
+          <svg viewBox="0 0 24 24"><path d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-3 3v-3z"/></svg>
+        </div>
+        <div>
+          <div class="what-item-title">Honest Limitations</div>
+          <p class="what-item-desc">What the study can&rsquo;t tell us. Sample size, methodology gaps, generalizability constraints &mdash; the parts the abstract leaves out.</p>
+        </div>
+      </div>
+      <div class="what-item">
+        <div class="what-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
+        </div>
+        <div>
+          <div class="what-item-title">Full Citation</div>
+          <p class="what-item-desc">APA citation, DOI, and a direct link to the source paper. Every claim traceable to the original research.</p>
+        </div>
+      </div>
     </div>
+  </div>
+</section>
 
-    <!-- ========== DIVIDER ========== -->
-    <div class="ornament">
-        <div class="ornament-line"></div>
-        <div class="ornament-diamond">&diams;</div>
-        <div class="ornament-line"></div>
+<!-- SAMPLE ISSUE -->
+<section class="sample-section" id="sample">
+  <div class="sample-inner">
+    <div class="section-header">
+      <h2 class="section-title">A Taste of the Brief</h2>
+      <span class="section-meta">Vol. I &middot; No. 14</span>
     </div>
-
-    <!-- ========== SAMPLE BRIEF ========== -->
-    <div class="section-label" id="sample">
-        <span>Sample Brief Previously Sent to Our Community</span>
-    </div>
-
     <div class="sample-brief">
-        <div class="sample-brief-label">DSM-5 Disorders &bull; Bipolar &amp; Related Disorders</div>
-        <h3>Integrating IPSRT, FFT, and Mindfulness with CBT May Strengthen Relapse Prevention in Bipolar Disorder</h3>
-
-        <div class="sample-brief-tag">Key Finding</div>
+      <div class="brief-header">
+        <span class="brief-title">THE THERAPIST BRIEF</span>
+        <span class="brief-issue">Vol. I &middot; Sample Issue</span>
+      </div>
+      <div class="brief-category">DSM-5 Disorders &bull; Bipolar &amp; Related Disorders</div>
+      <h2 class="brief-headline">Integrating IPSRT, FFT, and Mindfulness with CBT May Strengthen Relapse Prevention in Bipolar Disorder</h2>
+      <div class="brief-rule"></div>
+      <div class="brief-body">
+        <div class="brief-tag">Key Finding</div>
         <p>A narrative review suggests that combining CBT, Interpersonal and Social Rhythm Therapy (IPSRT), Family-Focused Therapy (FFT), and mindfulness-based interventions may improve symptom management and reduce relapse risk in clients with bipolar disorder beyond what any single modality offers. Psychoeducation embedded within family therapy appears particularly important for improving treatment adherence and daily functioning.</p>
 
-        <div class="sample-brief-tag">Why It Matters</div>
+        <div class="brief-tag">Why It Matters</div>
         <p>Clinicians working with clients who have bipolar disorder might consider structuring adjunctive psychotherapy around two parallel tracks: IPSRT&rsquo;s sleep-wake cycle stabilization and social rhythm monitoring alongside CBT work targeting cognitive distortions, rather than treating these as sequential. For families involved in care, FFT&rsquo;s psychoeducation component &mdash; specifically helping family members identify early warning signs of mood episodes &mdash; may directly support medication adherence between sessions. When a client has plateaued in individual therapy, adding a family psychoeducation component using FFT protocols could be a concrete next step worth exploring.</p>
 
-        <div class="sample-brief-tag">Limitations</div>
+        <div class="brief-tag">Limitations</div>
         <p>As a narrative short communication rather than a systematic review or meta-analysis, this paper does not report a structured search methodology, making it susceptible to selection bias in the evidence reviewed. No primary data were collected, and no effect sizes or head-to-head comparisons of the proposed integrative model are provided.</p>
-
-        <cite>Milic, J., et al. (2025). Short communication on proposed treatment directions in bipolar disorder: A psychotherapy perspective. Journal of Clinical Medicine, 14(6), 1857. https://doi.org/10.3390/jcm14061857</cite>
+      </div>
+      <div class="brief-citation">
+        Milic, J., et al. (2025). Short communication on proposed treatment directions in bipolar disorder: A psychotherapy perspective. <em>Journal of Clinical Medicine</em>, 14(6), 1857. <a href="https://doi.org/10.3390/jcm14061857" style="color:inherit;text-decoration:underline">https://doi.org/10.3390/jcm14061857</a>
+      </div>
+      <div class="brief-footer">
+        <span class="brief-footer-label">Continue reading in your inbox</span>
+        <a class="brief-read-more" href="#subscribe">Subscribe to read more &rarr;</a>
+      </div>
     </div>
+  </div>
+</section>
 
-    <!-- ========== DIVIDER ========== -->
-    <div class="ornament">
-        <div class="ornament-line"></div>
-        <div class="ornament-diamond">&diams;</div>
-        <div class="ornament-line"></div>
+<!-- PRICING -->
+<section class="pricing-section" id="pricing">
+  <div class="pricing-inner">
+    <div class="section-header">
+      <h2 class="section-title">Two Ways to Read</h2>
+      <span class="section-meta">Cancel anytime</span>
     </div>
-
-    <!-- ========== CATEGORIES ========== -->
-    <div class="section-label" id="categories">
-        <span>27 Topics Across 4 Categories</span>
+    <div class="pricing-grid">
+      <div class="plan">
+        <div class="plan-name">Free</div>
+        <div class="plan-price">$0<span> /forever</span></div>
+        <p class="plan-tagline">Start here. No credit card.</p>
+        <ul>
+          <li>One brief every Monday morning</li>
+          <li>Choose your Monday topic</li>
+          <li>Full citation and source link</li>
+          <li>Unsubscribe anytime</li>
+        </ul>
+        <a class="plan-cta plan-cta-secondary" href="#subscribe" data-tier="free">Start free</a>
+      </div>
+      <div class="plan plan-featured">
+        <div class="plan-name">Professional</div>
+        <div class="plan-price">$9<span> /month</span></div>
+        <p class="plan-tagline">A brief every weekday morning.</p>
+        <ul>
+          <li>Seven briefs per week, one each day</li>
+          <li>Choose a topic for each day of the week</li>
+          <li>Access to the full archive</li>
+          <li>Cancel anytime, full refund within 30 days</li>
+        </ul>
+        <a class="plan-cta plan-cta-primary" href="#subscribe" data-tier="paid">Apply for the beta</a>
+      </div>
     </div>
+  </div>
+</section>
 
-    <div class="categories">
-        <div class="cat-grid">
-            <div class="cat-item">
-                <h4>Therapeutic Approaches</h4>
-                <p>CBT, DBT, EMDR, ACT, IFS, Motivational Interviewing, Psychodynamic, SFBT</p>
-            </div>
-            <div class="cat-item">
-                <h4>DSM-5 Disorders</h4>
-                <p>Anxiety, Depression, PTSD, ADHD, Bipolar, Personality Disorders, Substance Use</p>
-            </div>
-            <div class="cat-item">
-                <h4>Counselor Wellness</h4>
-                <p>Compassion Fatigue, Vicarious Trauma, Self-Care, Work-Life Balance, Supervision, Mindfulness</p>
-            </div>
-            <div class="cat-item">
-                <h4>Specific Populations</h4>
-                <p>Children, Veterans, LGBTQ+, Older Adults, Culturally Diverse, Clients with Disabilities</p>
-            </div>
-        </div>
-    </div>
+<!-- SUBSCRIBE CTA -->
+<section class="subscribe-section" id="subscribe">
+  <div class="subscribe-kicker">For Licensed Therapists</div>
+  <h2 class="subscribe-headline">Research you can use.<br>In your inbox every Monday.</h2>
+  <p class="subscribe-sub">Free to start. One email per week. Unsubscribe anytime. We&rsquo;ll never share your address.</p>
+  <form class="subscribe-form" id="subscribe-form" novalidate>
+    <input type="email" id="subscribe-email" placeholder="your@email.com" required autocomplete="email">
+    <button type="submit" id="subscribe-btn">Get the Brief</button>
+  </form>
+  <div class="subscribe-msg" id="subscribe-msg" role="status" aria-live="polite"></div>
+  <div class="subscribe-note">No spam. No ads. Just research.</div>
+</section>
 
-    <!-- ========== DIVIDER ========== -->
-    <div class="ornament">
-        <div class="ornament-line"></div>
-        <div class="ornament-diamond">&diams;</div>
-        <div class="ornament-line"></div>
-    </div>
-
-    <!-- ========== DIVIDER ========== -->
-    <div class="ornament">
-        <div class="ornament-line"></div>
-        <div class="ornament-diamond">&diams;</div>
-        <div class="ornament-line"></div>
-    </div>
-
-    <!-- ========== PRICING ========== -->
-    <div class="section-label" id="pricing">
-        <span>Choose Your Plan</span>
-    </div>
-
-    <div class="pricing">
-        <div class="pricing-cards">
-            <div class="price-card">
-                <h3>Free</h3>
-                <div class="price">$0<span>/mo</span></div>
-                <div class="price-desc">Start here</div>
-                <ul>
-                    <li>1 brief per week (Mondays)</li>
-                    <li>Choose your Monday topic</li>
-                    <li>Full citation included</li>
-                    <li>Link to original paper</li>
-                </ul>
-                <a href="#subscribe" class="cta cta-secondary">Get Started</a>
-            </div>
-            <div class="price-card featured">
-                <h3>Professional</h3>
-                <div class="price">$9<span>/mo</span></div>
-                <div class="price-desc">or $89/year (save 17%)</div>
-                <ul>
-                    <li>7 briefs per week (daily)</li>
-                    <li>Choose a topic for each day</li>
-                    <li>Full citation included</li>
-                    <li>Link to original paper</li>
-                    <li>Access to full archive</li>
-                </ul>
-                <a href="#subscribe" class="cta cta-primary">Subscribe Now</a>
-            </div>
-        </div>
-    </div>
-
-    <!-- ========== FINAL CTA ========== -->
-    <div class="ornament">
-        <div class="ornament-line"></div>
-        <div class="ornament-diamond">&diams;</div>
-        <div class="ornament-line"></div>
-    </div>
-
-    <section class="bottom-cta">
-        <h2>Stay current. Stay grounded. Stay brief.</h2>
-        <p>Join hundreds of clinicians who start their morning with evidence.</p>
-        <a href="#subscribe" class="wizard-btn">Ready to Subscribe?</a>
-    </section>
-
-    <!-- ========== FOOTER ========== -->
-    <div class="footer-rule"></div>
-    <footer class="footer">
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <span class="wordmark">The Therapist Brief</span>
+        <p>Clinical research briefs for practicing therapists. Peer-reviewed. Practitioner-written. Published from Buffalo.</p>
+      </div>
+      <div>
+        <div class="footer-col-title">Publication</div>
         <div class="footer-links">
-            <a href="#about">About</a>
-            <a href="mailto:hello@thetherapistbrief.com">Contact</a>
-            <a href="#privacy">Privacy</a>
-            <a href="#terms">Terms</a>
+          <a href="#about">About the Brief</a>
+          <a href="#sample">Sample Issue</a>
+          <a href="#pricing">Pricing</a>
         </div>
-        <div class="footer-copy">&copy; 2026 The Therapist Brief &bull; All rights reserved</div>
-    </footer>
-
-</div>
+      </div>
+      <div>
+        <div class="footer-col-title">Topics</div>
+        <div class="footer-links">
+          <a href="#topics-therapeutic">Therapeutic Approaches</a>
+          <a href="#topics-dsm">DSM-5 Disorders</a>
+          <a href="#topics-wellness">Counselor Wellness</a>
+          <a href="#topics-populations">Specialized Populations</a>
+        </div>
+      </div>
+      <div>
+        <div class="footer-col-title">Account</div>
+        <div class="footer-links">
+          <a href="#subscribe">Subscribe</a>
+          <a href="preferences.html">Manage Preferences</a>
+          <a href="mailto:hello@thetherapistbrief.com">Contact</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span class="footer-legal">&copy; 2026 The Therapist Brief. All rights reserved.</span>
+      <span class="footer-legal">Privacy &middot; Terms</span>
+    </div>
+  </div>
+</footer>
 
 <script>
 (function() {
     var API = "https://api.thetherapistbrief.com";
 
-    /* ===== State ===== */
-    var userEmail = "";
-    var subscriberId = "";
-    var chosenTier = "free";
-    var selectedTopics = {};
+    var emailInput = document.getElementById("subscribe-email");
+    var subscribeBtn = document.getElementById("subscribe-btn");
+    var subscribeForm = document.getElementById("subscribe-form");
+    var subscribeMsg = document.getElementById("subscribe-msg");
 
-    /* ===== Constants ===== */
-    var DAYS = ["monday","tuesday","wednesday","thursday","friday","saturday","sunday"];
-    var DAY_LABELS = {
-        "monday": "Monday",
-        "tuesday": "Tuesday",
-        "wednesday": "Wednesday",
-        "thursday": "Thursday",
-        "friday": "Friday",
-        "saturday": "Saturday",
-        "sunday": "Sunday"
-    };
+    /* Track which tier the user came in via (free vs paid) */
+    var pendingTier = "free";
 
-    var TOPIC_LABELS = {
-        "cbt": "CBT",
-        "dbt": "DBT",
-        "emdr": "EMDR",
-        "act": "ACT",
-        "ifs": "IFS",
-        "motivational-interviewing": "Motivational Interviewing",
-        "psychodynamic": "Psychodynamic",
-        "sfbt": "SFBT",
-        "anxiety": "Anxiety",
-        "depression": "Depression",
-        "ptsd": "PTSD",
-        "adhd": "ADHD",
-        "bipolar": "Bipolar",
-        "personality-disorders": "Personality Disorders",
-        "substance-use": "Substance Use",
-        "compassion-fatigue": "Compassion Fatigue",
-        "vicarious-trauma": "Vicarious Trauma",
-        "self-care": "Self-Care",
-        "work-life-balance": "Work-Life Balance",
-        "supervision": "Supervision",
-        "mindfulness": "Mindfulness",
-        "children": "Children & Adolescents",
-        "veterans": "Veterans & Military",
-        "lgbtq": "LGBTQ+",
-        "older-adults": "Older Adults",
-        "culturally-diverse": "Culturally Diverse",
-        "disabilities": "Clients with Disabilities"
-    };
-
-    var GROUP_ORDER = [
-        "therapeutic-approaches",
-        "dsm5-disorders",
-        "counselor-wellness",
-        "specific-populations"
-    ];
-
-    var GROUP_LABELS = {
-        "therapeutic-approaches": "Therapeutic Approaches",
-        "dsm5-disorders": "DSM-5 Disorders",
-        "counselor-wellness": "Counselor Wellness",
-        "specific-populations": "Specific Populations"
-    };
-
-    var TOPIC_GROUPS = {
-        "therapeutic-approaches": [
-            "cbt","dbt","emdr","act","ifs",
-            "motivational-interviewing","psychodynamic","sfbt"
-        ],
-        "dsm5-disorders": [
-            "anxiety","depression","ptsd","adhd",
-            "bipolar","personality-disorders","substance-use"
-        ],
-        "counselor-wellness": [
-            "compassion-fatigue","vicarious-trauma","self-care",
-            "work-life-balance","supervision","mindfulness"
-        ],
-        "specific-populations": [
-            "children","veterans","lgbtq",
-            "older-adults","culturally-diverse","disabilities"
-        ]
-    };
-
-    /* ===== DOM refs ===== */
-    var wizardEl = document.getElementById("subscribe");
-
-    /* ===== Step navigation ===== */
-    function showStep(id) {
-        var steps = wizardEl.querySelectorAll(".wizard-step");
-        for (var i = 0; i < steps.length; i++) {
-            steps[i].classList.remove("active");
-        }
-        var target = document.getElementById(id);
-        if (target) {
-            target.classList.add("active");
-        }
-        /* Scroll to top of wizard */
-        var rect = wizardEl.getBoundingClientRect();
-        var scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-        var targetY = rect.top + scrollTop - 20;
-        window.scrollTo({ top: targetY, behavior: "smooth" });
-    }
-
-    /* ===== Helpers ===== */
-    function getMaxTopics() {
-        return chosenTier === "paid" ? 7 : 1;
-    }
-
-    function getSelectedCount() {
-        var n = 0;
-        for (var k in selectedTopics) {
-            if (selectedTopics.hasOwnProperty(k)) n++;
-        }
-        return n;
-    }
-
-    function getUsedDays() {
-        var used = {};
-        for (var slug in selectedTopics) {
-            if (selectedTopics.hasOwnProperty(slug)) {
-                used[selectedTopics[slug]] = true;
-            }
-        }
-        return used;
-    }
-
-    function getAvailableDays(currentSlug) {
-        var used = getUsedDays();
-        var avail = [];
-        for (var i = 0; i < DAYS.length; i++) {
-            var d = DAYS[i];
-            if (!used[d] || (currentSlug && selectedTopics[currentSlug] === d)) {
-                avail.push(d);
-            }
-        }
-        return avail;
-    }
-
-    /* ==============================
-       STEP 1: Email
-       ============================== */
-    var emailForm = document.getElementById("email-form");
-    var emailInput = document.getElementById("wizard-email");
-    var emailBtn = document.getElementById("email-btn");
-    var emailError = document.getElementById("email-error");
-
-    emailForm.addEventListener("submit", function(e) {
-        e.preventDefault();
-        var email = emailInput.value.trim();
-        if (!email) return;
-
-        emailBtn.disabled = true;
-        emailBtn.textContent = "Submitting\u2026";
-        emailError.textContent = "";
-
-        fetch(API + "/subscribe", {
-            method: "POST",
-            headers: {"Content-Type": "application/json"},
-            body: JSON.stringify({email: email})
-        })
-        .then(function(r) {
-            return r.json().then(function(d) { return {ok: r.ok, status: r.status, data: d}; });
-        })
-        .then(function(res) {
-            emailBtn.disabled = false;
-            emailBtn.textContent = "Get Started";
-
-            if (res.ok) {
-                userEmail = email;
-                subscriberId = res.data.subscriber_id || "";
-                var returnedTier = (res.data.tier || "free").toLowerCase();
-
-                /* If returning paid user, send to preferences */
-                if (returnedTier === "paid" || returnedTier === "premium") {
-                    emailError.style.color = "var(--brown)";
-                    emailError.textContent = "Welcome back! Redirecting to manage your topics\u2026";
-                    setTimeout(function() {
-                        window.location.href = "preferences.html?email=" + encodeURIComponent(email);
-                    }, 1000);
-                    return;
-                }
-
-                showStep("step-tier");
-            } else {
-                emailError.style.color = "#b33";
-                emailError.textContent = res.data.error || "Something went wrong. Please try again.";
-            }
-        })
-        .catch(function() {
-            emailBtn.disabled = false;
-            emailBtn.textContent = "Get Started";
-            emailError.style.color = "#b33";
-            emailError.textContent = "Connection error. Please try again.";
+    /* Pricing CTA buttons set the pendingTier and scroll to subscribe form. */
+    var planCtas = document.querySelectorAll(".plan-cta[data-tier]");
+    for (var i = 0; i < planCtas.length; i++) {
+        planCtas[i].addEventListener("click", function(e) {
+            pendingTier = this.getAttribute("data-tier") || "free";
+            /* Smooth-scroll to email input + focus it */
+            setTimeout(function() {
+                if (emailInput) emailInput.focus();
+            }, 600);
         });
-    });
-
-    /* ==============================
-       STEP 2: Tier selection
-       ============================== */
-    document.getElementById("back-to-email").addEventListener("click", function() {
-        showStep("step-email");
-    });
-
-    document.getElementById("select-free").addEventListener("click", function() {
-        chosenTier = "free";
-        selectedTopics = {};
-        renderTopicStep();
-        showStep("step-topics");
-    });
-
-    document.getElementById("select-paid").addEventListener("click", function() {
-        chosenTier = "paid";
-        selectedTopics = {};
-        renderTopicStep();
-        showStep("step-topics");
-    });
-
-    /* Also allow clicking the tier card itself */
-    document.getElementById("tier-free-card").addEventListener("click", function(e) {
-        if (e.target.tagName === "BUTTON") return;
-        document.getElementById("select-free").click();
-    });
-    document.getElementById("tier-paid-card").addEventListener("click", function(e) {
-        if (e.target.tagName === "BUTTON") return;
-        document.getElementById("select-paid").click();
-    });
-
-    /* ==============================
-       STEP 3: Topic selection
-       ============================== */
-    var topicsContainer = document.getElementById("topics-container");
-    var topicsCountEl = document.getElementById("topics-count");
-    var topicsMaxEl = document.getElementById("topics-max");
-    var topicsHeading = document.getElementById("topics-heading");
-    var topicsProgress = document.getElementById("topics-progress");
-    var topicsContinueBtn = document.getElementById("topics-continue-btn");
-    var topicsError = document.getElementById("topics-error");
-
-    function renderTopicStep() {
-        var maxT = getMaxTopics();
-        topicsMaxEl.textContent = maxT;
-        topicsCountEl.textContent = "0";
-
-        if (chosenTier === "paid") {
-            topicsHeading.textContent = "Select 7 topics, one for each day of the week";
-            topicsProgress.textContent = "Step 3 of 4";
-        } else {
-            topicsHeading.textContent = "Select 1 topic for your Monday brief";
-            topicsProgress.textContent = "Step 3 of 3";
-        }
-
-        topicsContinueBtn.disabled = true;
-        topicsError.textContent = "";
-        topicsContainer.innerHTML = "";
-
-        for (var gi = 0; gi < GROUP_ORDER.length; gi++) {
-            var groupKey = GROUP_ORDER[gi];
-            var topics = TOPIC_GROUPS[groupKey];
-            if (!topics) continue;
-
-            var groupDiv = document.createElement("div");
-            groupDiv.className = "wizard-topic-group";
-
-            var groupTitle = document.createElement("h3");
-            groupTitle.textContent = GROUP_LABELS[groupKey] || groupKey;
-            groupDiv.appendChild(groupTitle);
-
-            var grid = document.createElement("div");
-            grid.className = "wizard-topic-grid";
-
-            for (var ti = 0; ti < topics.length; ti++) {
-                (function(slug) {
-                    var item = document.createElement("div");
-                    item.className = "wizard-topic-item";
-                    item.setAttribute("data-topic", slug);
-
-                    var h4 = document.createElement("h4");
-                    h4.textContent = TOPIC_LABELS[slug] || slug;
-                    item.appendChild(h4);
-
-                    var dayLabel = document.createElement("span");
-                    dayLabel.className = "wt-day-label";
-                    item.appendChild(dayLabel);
-
-                    var daySelDiv = document.createElement("div");
-                    daySelDiv.className = "wt-day-selector";
-                    item.appendChild(daySelDiv);
-
-                    item.addEventListener("click", function(e) {
-                        /* Ignore clicks on the select dropdown itself */
-                        if (e.target.tagName === "SELECT") return;
-
-                        if (selectedTopics.hasOwnProperty(slug)) {
-                            /* Deselect */
-                            delete selectedTopics[slug];
-                            daySelDiv.innerHTML = "";
-                        } else {
-                            /* Select */
-                            if (getSelectedCount() >= getMaxTopics()) return;
-
-                            if (chosenTier === "free") {
-                                selectedTopics[slug] = "monday";
-                            } else {
-                                var avail = getAvailableDays(null);
-                                if (avail.length === 0) return;
-                                selectedTopics[slug] = avail[0];
-                            }
-
-                            /* Build day selector */
-                            daySelDiv.innerHTML = "";
-                            if (chosenTier === "paid") {
-                                var sel = buildDaySelect(slug);
-                                daySelDiv.appendChild(sel);
-                            }
-                        }
-
-                        updateTopicUI();
-                    });
-
-                    grid.appendChild(item);
-                })(topics[ti]);
-            }
-
-            groupDiv.appendChild(grid);
-            topicsContainer.appendChild(groupDiv);
-        }
     }
 
-    function buildDaySelect(slug) {
-        var sel = document.createElement("select");
-        var avail = getAvailableDays(slug);
-
-        for (var i = 0; i < avail.length; i++) {
-            var opt = document.createElement("option");
-            opt.value = avail[i];
-            opt.textContent = DAY_LABELS[avail[i]];
-            sel.appendChild(opt);
-        }
-
-        sel.value = selectedTopics[slug] || (avail[0] || "");
-
-        sel.addEventListener("change", function(e) {
-            e.stopPropagation();
-            selectedTopics[slug] = sel.value;
-            updateTopicUI();
-        });
-        sel.addEventListener("click", function(e) {
-            e.stopPropagation();
-        });
-
-        return sel;
+    function setMsg(text, isError) {
+        if (!subscribeMsg) return;
+        subscribeMsg.textContent = text || "";
+        if (isError) subscribeMsg.classList.add("error");
+        else subscribeMsg.classList.remove("error");
     }
 
-    function updateTopicUI() {
-        var count = getSelectedCount();
-        var maxT = getMaxTopics();
-        topicsCountEl.textContent = count;
-        topicsMaxEl.textContent = maxT;
-        topicsContinueBtn.disabled = (count < maxT);
+    if (subscribeForm) {
+        subscribeForm.addEventListener("submit", function(e) {
+            e.preventDefault();
+            var email = (emailInput.value || "").trim();
+            if (!email) { setMsg("Please enter an email address.", true); return; }
 
-        var items = topicsContainer.querySelectorAll(".wizard-topic-item");
-        for (var i = 0; i < items.length; i++) {
-            var el = items[i];
-            var slug = el.getAttribute("data-topic");
-            var isSelected = selectedTopics.hasOwnProperty(slug);
+            subscribeBtn.disabled = true;
+            var originalLabel = subscribeBtn.textContent;
+            subscribeBtn.textContent = "Submitting\u2026";
+            setMsg("");
 
-            if (isSelected) {
-                el.classList.add("selected");
-                el.classList.remove("disabled");
-            } else {
-                el.classList.remove("selected");
-                if (count >= maxT) {
-                    el.classList.add("disabled");
-                } else {
-                    el.classList.remove("disabled");
-                }
-            }
+            /* All free signups go through /subscribe. Paid (beta) interest
+               routes through /apply-beta until Stripe is live again. */
+            var endpoint = (pendingTier === "paid") ? "/apply-beta" : "/subscribe";
+            var body = (pendingTier === "paid")
+                ? { email: email, name: email.split("@")[0], practice_type: "" }
+                : { email: email };
 
-            /* Update day label */
-            var dayLabelEl = el.querySelector(".wt-day-label");
-            if (isSelected && selectedTopics[slug]) {
-                dayLabelEl.textContent = DAY_LABELS[selectedTopics[slug]] || "";
-            } else {
-                dayLabelEl.textContent = "";
-            }
-
-            /* Rebuild day selectors for paid tier to reflect available days */
-            if (chosenTier === "paid" && isSelected) {
-                var dsDiv = el.querySelector(".wt-day-selector");
-                var currentVal = selectedTopics[slug];
-                dsDiv.innerHTML = "";
-                var newSel = buildDaySelect(slug);
-                newSel.value = currentVal;
-                dsDiv.appendChild(newSel);
-            }
-
-            /* Clear day selector for deselected items */
-            if (!isSelected) {
-                var dsDivOff = el.querySelector(".wt-day-selector");
-                dsDivOff.innerHTML = "";
-            }
-        }
-    }
-
-    /* Back from topics */
-    document.getElementById("back-to-tier").addEventListener("click", function() {
-        showStep("step-tier");
-    });
-
-    /* Continue from topics */
-    topicsContinueBtn.addEventListener("click", function() {
-        if (chosenTier === "free") {
-            /* Save preferences for free tier and go to confirm */
-            var freeSlug = "";
-            for (var k in selectedTopics) {
-                if (selectedTopics.hasOwnProperty(k)) {
-                    freeSlug = k;
-                    break;
-                }
-            }
-
-            var prefs = {"monday": freeSlug};
-
-            topicsContinueBtn.disabled = true;
-            topicsContinueBtn.textContent = "Saving\u2026";
-            topicsError.textContent = "";
-
-            fetch(API + "/preferences", {
+            fetch(API + endpoint, {
                 method: "POST",
                 headers: {"Content-Type": "application/json"},
-                body: JSON.stringify({email: userEmail, preferences: prefs})
+                body: JSON.stringify(body)
             })
             .then(function(r) {
-                return r.json().then(function(d) { return {ok: r.ok, data: d}; });
+                return r.json().then(function(d) { return {ok: r.ok, status: r.status, data: d}; });
             })
             .then(function(res) {
-                topicsContinueBtn.disabled = false;
-                topicsContinueBtn.textContent = "Continue";
+                subscribeBtn.disabled = false;
+                subscribeBtn.textContent = originalLabel;
 
                 if (res.ok) {
-                    showConfirmation(freeSlug);
-                    showStep("step-confirm");
+                    if (pendingTier === "paid") {
+                        setMsg("Thanks \u2014 we'll be in touch about beta access.");
+                    } else {
+                        setMsg("You're in. Pick your Monday topic next.");
+                        /* Send to preferences page so they can pick their topic */
+                        setTimeout(function() {
+                            window.location.href = "preferences.html?email=" + encodeURIComponent(email);
+                        }, 900);
+                    }
+                } else if (res.status === 409) {
+                    setMsg("You're already subscribed \u2014 redirecting to manage your preferences.");
+                    setTimeout(function() {
+                        window.location.href = "preferences.html?email=" + encodeURIComponent(email);
+                    }, 900);
                 } else {
-                    topicsError.style.color = "#b33";
-                    topicsError.textContent = res.data.error || "Could not save preferences. Please try again.";
-                    topicsContinueBtn.disabled = false;
+                    setMsg(res.data && res.data.error ? res.data.error : "Something went wrong. Please try again.", true);
                 }
             })
             .catch(function() {
-                topicsContinueBtn.disabled = false;
-                topicsContinueBtn.textContent = "Continue";
-                topicsError.style.color = "#b33";
-                topicsError.textContent = "Connection error. Please try again.";
+                subscribeBtn.disabled = false;
+                subscribeBtn.textContent = originalLabel;
+                setMsg("Connection error. Please try again.", true);
             });
-
-        } else {
-            /* Paid: go to checkout step */
-            renderCheckoutSummary();
-            showStep("step-checkout");
-        }
-    });
-
-    /* ==============================
-       STEP 4: Checkout (paid only)
-       ============================== */
-    var checkoutSummary = document.getElementById("checkout-summary");
-    var promoInput = document.getElementById("promo-input");
-    var checkoutBtn = document.getElementById("checkout-btn");
-    var checkoutError = document.getElementById("checkout-error");
-
-    function renderCheckoutSummary() {
-        checkoutSummary.innerHTML = "";
-
-        /* Build sorted list by day */
-        var dayTopicPairs = [];
-        for (var slug in selectedTopics) {
-            if (selectedTopics.hasOwnProperty(slug)) {
-                dayTopicPairs.push({
-                    day: selectedTopics[slug],
-                    slug: slug
-                });
-            }
-        }
-        dayTopicPairs.sort(function(a, b) {
-            return DAYS.indexOf(a.day) - DAYS.indexOf(b.day);
         });
-
-        for (var i = 0; i < dayTopicPairs.length; i++) {
-            var row = document.createElement("div");
-            row.className = "checkout-summary-row";
-
-            var daySpan = document.createElement("span");
-            daySpan.className = "cs-day";
-            daySpan.textContent = DAY_LABELS[dayTopicPairs[i].day] || dayTopicPairs[i].day;
-
-            var topicSpan = document.createElement("span");
-            topicSpan.className = "cs-topic";
-            topicSpan.textContent = TOPIC_LABELS[dayTopicPairs[i].slug] || dayTopicPairs[i].slug;
-
-            row.appendChild(daySpan);
-            row.appendChild(topicSpan);
-            checkoutSummary.appendChild(row);
-        }
     }
-
-    document.getElementById("back-to-topics").addEventListener("click", function() {
-        showStep("step-topics");
-    });
-
-    checkoutBtn.addEventListener("click", function() {
-        /* Build preferences as {day: slug} */
-        var prefs = {};
-        for (var slug in selectedTopics) {
-            if (selectedTopics.hasOwnProperty(slug)) {
-                prefs[selectedTopics[slug]] = slug;
-            }
-        }
-
-        var promoCode = promoInput.value.trim();
-
-        checkoutBtn.disabled = true;
-        checkoutBtn.textContent = "Redirecting\u2026";
-        checkoutError.textContent = "";
-
-        var body = {
-            email: userEmail,
-            preferences: prefs
-        };
-        if (promoCode) {
-            body.promo_code = promoCode;
-        }
-
-        fetch(API + "/create-checkout-session", {
-            method: "POST",
-            headers: {"Content-Type": "application/json"},
-            body: JSON.stringify(body)
-        })
-        .then(function(r) {
-            return r.json().then(function(d) { return {ok: r.ok, data: d}; });
-        })
-        .then(function(res) {
-            if (res.ok && res.data.checkout_url) {
-                window.location.href = res.data.checkout_url;
-            } else {
-                checkoutBtn.disabled = false;
-                checkoutBtn.textContent = "Subscribe \u2014 $9/month";
-                checkoutError.style.color = "#b33";
-                checkoutError.textContent = res.data.error || "Could not start checkout. Please try again.";
-            }
-        })
-        .catch(function() {
-            checkoutBtn.disabled = false;
-            checkoutBtn.textContent = "Subscribe \u2014 $9/month";
-            checkoutError.style.color = "#b33";
-            checkoutError.textContent = "Connection error. Please try again.";
-        });
-    });
-
-    /* ==============================
-       STEP 5: Confirmation (free)
-       ============================== */
-    var confirmMessage = document.getElementById("confirm-message");
-    var confirmUpgrade = document.getElementById("confirm-upgrade");
-    var confirmManage = document.getElementById("confirm-manage");
-
-    function showConfirmation(topicSlug) {
-        var topicName = TOPIC_LABELS[topicSlug] || topicSlug;
-        confirmMessage.textContent = "Your first brief arrives Monday \u2014 topic: " + topicName;
-        confirmManage.href = "preferences.html?email=" + encodeURIComponent(userEmail);
-    }
-
-    confirmUpgrade.addEventListener("click", function(e) {
-        e.preventDefault();
-        chosenTier = "paid";
-        selectedTopics = {};
-        renderTopicStep();
-        showStep("step-topics");
-    });
-
 })();
 </script>
+
 </body>
 </html>
