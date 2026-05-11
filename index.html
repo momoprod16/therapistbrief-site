@@ -845,19 +845,19 @@
       <div class="sidebar-label">Recent Briefs</div>
       <div class="issue-preview">
         <div class="issue-item">
-          <div class="issue-number">Vol. I &middot; No. 18</div>
-          <div class="issue-title">Repeated MI Protocol Fails to Reduce Opioid Overdose in Fentanyl-Dominant Market</div>
-          <div class="issue-subtitle">Phase III RCT, n=268</div>
+          <div class="issue-number">Vol. I &middot; No. 194</div>
+          <div class="issue-title">Community Health Worker Psychoeducation Reduces Depression and Anxiety in Racially Diverse Adults (n=1044, Lancet RCT)</div>
+          <div class="issue-subtitle">RCT, 2025</div>
         </div>
         <div class="issue-item">
-          <div class="issue-number">Vol. I &middot; No. 17</div>
-          <div class="issue-title">Six-Week Internet-Based ACT Cuts Burnout and Distress in Healthcare Workers</div>
-          <div class="issue-subtitle">Journal of Medical Internet Research, 2024</div>
+          <div class="issue-number">Vol. I &middot; No. 193</div>
+          <div class="issue-title">Six-Week Internet-Based ACT Program Cuts Burnout and Distress in Healthcare Workers With Large Effect Sizes</div>
+          <div class="issue-subtitle">RCT, 2024</div>
         </div>
         <div class="issue-item">
-          <div class="issue-number">Vol. I &middot; No. 16</div>
-          <div class="issue-title">Negative Cognitions Link to Adolescent Anxiety at r=0.41 (k=42, N=27,845)</div>
-          <div class="issue-subtitle">Meta-analysis, clinical samples</div>
+          <div class="issue-number">Vol. I &middot; No. 192</div>
+          <div class="issue-title">First Scoping Review Maps IFS Evidence: 27 Studies, Only 2 RCTs, Promising but Thin (k=27)</div>
+          <div class="issue-subtitle">scoping review, 2025</div>
         </div>
       </div>
     </div>
@@ -1099,7 +1099,7 @@
 
             subscribeBtn.disabled = true;
             var originalLabel = subscribeBtn.textContent;
-            subscribeBtn.textContent = "Submitting\u2026";
+            subscribeBtn.textContent = "Submitting…";
             setMsg("");
 
             /* All free signups go through /subscribe. Paid (beta) interest
@@ -1123,7 +1123,7 @@
 
                 if (res.ok) {
                     if (pendingTier === "paid") {
-                        setMsg("Thanks \u2014 we'll be in touch about beta access.");
+                        setMsg("Thanks — we'll be in touch about beta access.");
                     } else {
                         setMsg("You're in. Pick your Monday topic next.");
                         /* Send to preferences page so they can pick their topic */
@@ -1132,7 +1132,7 @@
                         }, 900);
                     }
                 } else if (res.status === 409) {
-                    setMsg("You're already subscribed \u2014 redirecting to manage your preferences.");
+                    setMsg("You're already subscribed — redirecting to manage your preferences.");
                     setTimeout(function() {
                         window.location.href = "preferences.html?email=" + encodeURIComponent(email);
                     }, 900);
